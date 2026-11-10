@@ -1,0 +1,1161 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>양예지 포트폴리오</title>
+<script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("js-type")}catch(e){}</script>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preload" href="fonts/web/Pretendard-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/web/GmarketSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Fonts: fonts/web/*.woff2 = 원본(fonts/)을 KS X 1001 한글 2,350자 + 영문 + 페이지에 쓰인 글자로 서브셋한 웹용 파일.
+   본문 Pretendard / 제목 G마켓 산스 / 표지·Thank you 영문 큰 제목 Edensor / 참조·보조·인용 부크크명조 */
+@font-face{font-family:"Pretendard";src:url("fonts/web/Pretendard-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Pretendard";src:url("fonts/web/Pretendard-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Pretendard";src:url("fonts/web/Pretendard-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Gmarket Sans";src:url("fonts/web/GmarketSans-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Gmarket Sans";src:url("fonts/web/GmarketSans-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Bookk Myungjo";src:url("fonts/web/BookkMyungjo-Light.woff2") format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:"Bookk Myungjo";src:url("fonts/web/BookkMyungjo-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Edensor";src:url("fonts/web/Edensor.woff2") format("woff2");font-weight:400;font-display:swap}
+/* Layout: 16:9 보드를 세로로 쌓는 비핸스형 포트폴리오. 표지 → 프로필 → 목차 → 프로젝트 4개(커버·상세·회고) → Thank you.
+   보드마다 색이 다르고, 얇은 선 목록(오에이 건축 사이트의 인덱스처럼)과 큰 세리프 제목으로 정리. */
+:root{
+  /* 흰색 위주 + 연한 하늘색·연노랑 포인트 */
+  --bg:#F3F7FA;            /* 거의 흰 바닥 */
+  --fg:#10283F;
+  --muted:#5A6B7C;
+  --b-cream:#FFFFFF;       /* 기본 보드: 흰색 */
+  --b-green:#E2F0FA;       /* 표지·Thank you: 연한 하늘 */
+  --b-leaf:#FFFAE6;        /* 연노랑 */
+  --b-peach:#FFFFFF;       /* 흰색 */
+  --b-mint:#EEF6FC;        /* 아주 연한 하늘 */
+  --b-ink:#E2F0FA;         /* 연한 하늘 */
+  --sun:#FCE68A;
+  --tomato:#D9593B;
+  --f-display:"Edensor","Bookk Myungjo",serif;                              /* 영문 큰 제목 (표지·Thank you) */
+  --f-head:"Gmarket Sans","Pretendard","Apple SD Gothic Neo",sans-serif;    /* 제목 */
+  --f-body:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;    /* 본문 */
+  --f-serif:"Bookk Myungjo","Noto Serif KR","AppleMyungjo",serif;            /* 참조·보조·인용 */
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0D1C2B;--fg:#E6F1FA;--muted:#9DB4C8;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0D1C2B;--fg:#E6F1FA;--muted:#9DB4C8;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.7;word-break:keep-all;overflow-wrap:break-word;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 90px;counter-reset:pg}
+p{margin:0}h1,h2,h3,ul,ol,dl,dd,figure{margin:0;padding:0}
+ul,ol{list-style:none}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.deck{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+
+/* ---------- board ---------- */
+.board{--bb:var(--b-cream);--bf:#10283F;--ac:#2F6EA5;--mu:#5A6B7C;--ln:rgba(16,40,63,.28);box-shadow:0 0 0 1px rgba(16,40,63,.07);
+  position:relative;background:var(--bb);color:var(--bf);border-radius:6px;padding:clamp(22px,4.2vw,52px);
+  aspect-ratio:16/9;overflow:clip;display:grid;align-content:start;gap:clamp(14px,2vw,24px);counter-increment:pg}
+.board::after{content:counter(pg,decimal-leading-zero);position:absolute;right:clamp(14px,2.2vw,26px);bottom:clamp(10px,1.6vw,18px);
+  font-family:var(--f-serif);font-weight:300;font-size:15px;color:var(--mu)}
+.b-green{--bb:var(--b-green);--ac:#2F6EA5;--mu:#4E6378}
+.b-leaf{--bb:var(--b-leaf);--mu:#66655A}
+.b-peach{--bb:var(--b-peach)}
+.b-mint{--bb:var(--b-mint)}
+.b-ink{--bb:var(--b-ink)}
+.b-sun{--bb:#FFF5CF;--mu:#66655A}
+.b-center{align-content:center}
+.board.compact{gap:clamp(12px,1.5vw,18px)}
+
+.kick{font-family:var(--f-serif);font-weight:700;font-size:clamp(16px,1.7vw,20px);color:var(--ac);line-height:1.2}
+.t-hero{font-family:var(--f-display);font-size:clamp(64px,15vw,184px);line-height:1;letter-spacing:0;font-weight:400}
+.t-xl{font-family:var(--f-head);font-weight:700;font-size:clamp(30px,5.2vw,64px);line-height:1.18;letter-spacing:-.02em;text-wrap:balance}
+.t-lg{font-family:var(--f-head);font-weight:700;font-size:clamp(23px,3.2vw,38px);line-height:1.28;letter-spacing:-.01em;text-wrap:balance}
+.t-md{font-family:var(--f-head);font-weight:700;font-size:clamp(17px,1.9vw,22px);line-height:1.4}
+.tx{font-size:clamp(14.5px,1.35vw,16.5px);line-height:1.75;max-width:38em}
+.sm{font-size:clamp(12.5px,1.1vw,14px);color:var(--mu);line-height:1.6}
+.hl{background:linear-gradient(transparent 60%,var(--sun) 60%,var(--sun) 92%,transparent 92%)}
+.b-leaf .hl,.b-sun .hl{background:linear-gradient(transparent 60%,#CDE6F8 60%,#CDE6F8 92%,transparent 92%)}
+
+.cols{display:grid;gap:clamp(18px,3vw,40px);grid-template-columns:repeat(var(--n,2),minmax(0,1fr));align-items:start}
+.cprof{grid-template-columns:minmax(0,.7fr) minmax(0,1.2fr) minmax(0,1.2fr)}.cA{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}.cB{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}
+.nowrap-lines span{white-space:nowrap}
+.c3{--n:3}.c4{--n:4}.c12{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}.c21{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}.c11{--n:2}
+.stack{display:grid;gap:10px;align-content:start}
+
+/* thin-rule list (index style) */
+.rows{border-top:1.5px solid var(--bf)}
+.rows li,.rows a.row{display:grid;grid-template-columns:3.2em minmax(0,1fr) auto;gap:14px;align-items:baseline;padding:11px 2px;border-bottom:1px solid var(--ln);text-decoration:none;color:inherit}
+.rows .no{font-family:var(--f-head);font-weight:500;font-size:16px;color:var(--ac)}
+.rows .ti{font-family:var(--f-head);font-weight:700;font-size:clamp(16px,1.8vw,21px)}
+.rows .cat{font-size:clamp(12.5px,1.1vw,14px);color:var(--mu);text-align:right}
+.rows.terms li{grid-template-columns:4.6em minmax(0,1fr);padding:8px 2px}
+.rows.terms .no{white-space:nowrap;font-size:15px}
+.rows.terms .ti{font-size:clamp(14px,1.4vw,16px)}
+.rows.terms .cat{display:none}
+.rows.tight li{padding:7px 2px}
+.rows.two li{grid-template-columns:minmax(0,1fr) auto}
+.rows.toc li{display:block;padding:0;border:0}
+.rows a.row:hover .ti{text-decoration:underline;text-underline-offset:4px}
+.kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:7px 18px;font-size:clamp(13.5px,1.2vw,15.5px)}
+.kv dt{color:var(--ac);font-weight:700;white-space:nowrap}
+.kv.line{border-top:1.5px solid var(--bf);padding-top:14px}
+
+/* cover meta strip */
+.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1.5px solid var(--bf);border-bottom:1px solid var(--ln)}
+.meta div{padding:12px 14px 12px 0}
+.meta dt{font-size:12.5px;color:var(--ac);font-weight:700;letter-spacing:.06em}
+.meta dd{font-size:clamp(14px,1.3vw,16px);margin-top:2px;line-height:1.5}
+
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{border:1.5px solid var(--bf);border-radius:999px;padding:1px 12px;font-size:clamp(12.5px,1.1vw,14px);line-height:1.7}
+.chip.fill{background:var(--bf);color:var(--bb)}
+
+/* placeholders */
+.slot{border:2px dashed var(--ln);border-radius:10px;display:grid;place-items:center;text-align:center;padding:14px;color:var(--mu);font-size:14px;min-height:120px;background:rgba(255,255,255,.18)}
+.slot.photo{aspect-ratio:3/4;min-height:0}
+.prof-top{display:grid;grid-template-columns:clamp(120px,14vw,160px) minmax(0,1.7fr) minmax(0,.9fr);gap:clamp(20px,3vw,40px);align-items:start}
+.prof-lead{max-width:33em;font-size:clamp(15.5px,1.6vw,18px);line-height:1.62}
+.lead-main{display:block;text-wrap:balance}
+.lead-last{display:block;text-wrap:balance}
+@media (min-width:980px){.lead-last{white-space:nowrap}}
+.prof-career{display:grid;gap:8px}
+.prof-career .rows li{grid-template-columns:minmax(0,1fr);gap:1px;padding:8px 2px}
+.prof-career .rows .cat{text-align:left}
+.prof-career .ti{font-size:clamp(13.5px,1.25vw,15px)}
+.prof-career .cat{font-size:12px}
+.prof-info{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,2.6vw,36px);border-top:1.5px solid var(--bf);padding-top:16px;align-items:start}
+.prof-info .kv{font-size:clamp(12.5px,1.1vw,14px);gap:6px 14px}
+.prof-info .kv dd{line-height:1.5}
+img.photo{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:50% 30%;border-radius:10px}
+.slot.wide{aspect-ratio:16/9;min-height:0}
+.slot.sq{aspect-ratio:1/1;min-height:0}
+.todo{border-bottom:2px dashed var(--tomato);color:inherit}
+.big-n{font-family:var(--f-head);font-weight:700;letter-spacing:-.02em;font-size:clamp(44px,7vw,92px);line-height:.95;color:var(--ac)}
+
+/* phones */
+.phones{display:flex;gap:clamp(14px,2vw,26px);align-items:flex-start;justify-content:center}
+.phone{flex:0 0 clamp(150px,16vw,205px);min-width:0}
+.phone .scr{border:1.5px solid var(--ln);border-radius:18px;overflow:hidden;background:#2a2a2a;aspect-ratio:600/1298}
+.phone video{display:block;width:100%;height:100%;object-fit:cover}
+.phone p{margin-top:8px;font-size:clamp(11.5px,1vw,13px);color:var(--mu);line-height:1.45}
+.phone p b{display:block;color:var(--bf);font-family:var(--f-head);font-size:clamp(13px,1.15vw,15px);margin-bottom:2px}
+
+.tag-pick .chip{font-size:clamp(12.5px,1.1vw,14px);transition:background .25s,color .25s}
+.tag-preview img,.tag-preview figcaption{transition:opacity .25s}.tag-preview.swap img,.tag-preview.swap figcaption{opacity:0}
+@media (prefers-reduced-motion:reduce){.tag-pick .chip,.tag-preview img,.tag-preview figcaption{transition:none}}
+.tag-pick .chip.on{background:var(--bf);color:var(--bb)}
+.tag-preview{display:grid;grid-template-columns:clamp(110px,13vw,150px) minmax(0,1fr);gap:14px;align-items:center;margin:0}
+.tag-preview img{display:block;width:100%;height:auto;aspect-ratio:4/3;border-radius:12px;border:1px solid var(--ln)}
+.tag-preview figcaption{display:grid;gap:4px}
+.tag-preview b{font-family:var(--f-head);font-size:clamp(15px,1.4vw,18px)}
+.tag-preview span{font-size:clamp(12.5px,1.1vw,14px);color:var(--mu);line-height:1.5}
+.tag-preview em{font-style:normal;font-size:12px;color:var(--ac)}
+.retro-merge .retro .tx{font-size:clamp(13.5px,1.25vw,15px);line-height:1.65}
+.friend-box{gap:10px;background:var(--b-mint);border-radius:12px;padding:clamp(14px,2vw,22px)}
+.friend-box .q{font-size:clamp(14px,1.35vw,16.5px)}
+.yt-hero{position:relative;display:block}
+.yt-hero img{aspect-ratio:16/9;border-radius:10px}
+.yt-hero .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:rgba(16,40,63,.78);color:#fff;display:grid;place-items:center;font-size:20px;padding-left:4px;transition:transform .2s}
+.yt-hero:hover .play{transform:translate(-50%,-50%) scale(1.08)}
+.stat-row{display:flex;gap:clamp(16px,2.4vw,30px);border-top:1px solid var(--ln);padding-top:10px}
+.stat-row div{display:grid;gap:0}
+.stat-row b{font-family:var(--f-head);font-size:clamp(20px,2.2vw,28px);color:var(--ac);line-height:1.2}
+.stat-row span{font-size:12px;color:var(--mu)}
+.traffic{display:grid;gap:8px}
+.tbar{display:flex;height:12px;border-radius:999px;overflow:hidden;gap:2px}
+.tbar i{display:block;width:var(--w);background:var(--c)}
+.tlegend{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 18px}
+.tlegend li{display:flex;align-items:center;gap:6px;font-size:clamp(12px,1.05vw,13.5px)}
+.tlegend li i{width:9px;height:9px;border-radius:50%;background:var(--c);flex:none}
+.tlegend li b{margin-left:auto;font-family:var(--f-head);font-weight:500}
+.tlegend li.em{color:var(--ac);font-weight:700}
+.reply-row{display:grid;grid-template-columns:minmax(0,1fr) clamp(300px,37vw,400px);gap:10px clamp(20px,3vw,40px);align-items:start;border-top:1px solid var(--ln);padding-top:14px}
+.cmt-grid{display:grid;gap:8px}
+.cmt-grid img{display:block;width:100%;height:auto;background:#fff;border:1px solid rgba(16,40,63,.12);border-radius:12px;padding:5px 8px;box-sizing:border-box}
+@media (max-width:860px){.reply-row{grid-template-columns:1fr}.cmt-grid{max-width:420px}}
+.reply-row .q{font-size:clamp(14px,1.35vw,16.5px)}
+.route{display:flex;flex-wrap:wrap;gap:8px 4px;align-items:flex-start;counter-reset:none}
+.route li{display:grid;gap:1px;padding:4px 10px;border-radius:10px;background:var(--bb);border:1px solid var(--ln);position:relative;margin-right:14px}
+.route li::after{content:"→";position:absolute;right:-15px;top:50%;transform:translateY(-50%);color:var(--mu);font-size:12px}
+.route li:last-child::after{content:none}
+.route b{font-family:var(--f-head);font-weight:700;font-size:clamp(13px,1.2vw,15px)}
+.route span{font-size:11.5px;color:var(--mu)}
+.route em{font-style:normal;font-size:11px;color:var(--ac);font-weight:700;max-width:11em;line-height:1.35}
+.route li.home{background:transparent;border-style:dashed;opacity:.7}
+.route li.key{background:#fff;border-color:var(--ac)}
+.route li.now{background:var(--sun);border-color:var(--sun)}
+.nums-sm .big-n{font-size:clamp(34px,5.2vw,66px)}
+.reel-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;max-width:560px}
+.reel{display:grid;gap:5px;text-decoration:none;color:inherit;align-content:start}
+.reel img{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:10px;border:1px solid var(--ln);transition:transform .25s}
+.reel:hover img{transform:translateY(-3px)}
+.reel span{font-size:clamp(11.5px,1vw,13px);line-height:1.35}
+.reel small{display:block;color:var(--mu);font-size:11.5px}
+.reel-links{display:flex;flex-wrap:wrap;gap:8px}
+.reel-links .chip{text-decoration:none;color:inherit;background:#fff}
+.reel-links .chip:hover{background:var(--bf);color:var(--bb)}
+/* spec list (인용함 개선 내역) */
+.cset{grid-template-columns:clamp(160px,20vw,215px) minmax(0,1fr);align-items:start}
+.set-shot img,.set-shot video{display:block;width:100%;height:auto;border-radius:18px;border:1.5px solid var(--ln);background:#2a2a2a}
+.mine.mine-soft{background:var(--b-mint);color:var(--ac)}
+.spec>.spec-plan{border-top-style:dashed}
+.spec-plan h4,.spec-plan p{color:var(--mu)}
+.spec-plan h4{font-weight:500}
+
+.spec{display:grid;grid-template-columns:repeat(var(--n,2),minmax(0,1fr));gap:14px 26px;align-content:start}
+.spec>div{border-top:1px solid var(--ln);padding-top:9px;display:grid;gap:4px;align-content:start}
+.spec h4{margin:0;font-family:var(--f-head);font-weight:700;font-size:clamp(14px,1.35vw,16.5px);line-height:1.35}
+.spec p{font-size:clamp(12.5px,1.12vw,14px);line-height:1.6}
+.mine{font-style:normal;font-family:var(--f-body);font-weight:700;font-size:11px;letter-spacing:0;vertical-align:2px;margin-left:6px;padding:1px 7px;border-radius:999px;background:var(--sun);color:#10283F;white-space:nowrap}
+
+/* youtube thumbs */
+.ytg{display:grid;gap:12px 10px;grid-template-columns:repeat(var(--n,4),minmax(0,1fr))}
+.yt{display:grid;gap:5px;align-content:start;text-decoration:none;color:inherit}
+.yt img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:6px;background:#DCE8F1;transition:transform .25s}
+.yt span{font-size:clamp(11.5px,1vw,13px);line-height:1.4}
+.yt:hover img{transform:translateY(-3px)}
+.ytg16 .yt span{font-family:var(--f-head);font-weight:500;font-size:13px;color:var(--ac)}
+.guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px;align-content:start}
+figure.cap{display:grid;gap:5px}
+figure.cap img{display:block;width:100%;height:auto;border-radius:6px;border:1px solid rgba(16,40,63,.12);cursor:zoom-in}
+figure.cap figcaption{font-size:clamp(11.5px,1vw,13px);color:var(--mu);line-height:1.4}
+.yt .ing{font-style:normal;font-size:11px;font-weight:700;padding:0 6px;border-radius:999px;background:var(--sun);color:#10283F;vertical-align:1px}
+.ytg-nanna .yt small{display:block;color:var(--mu);font-size:11.5px;margin-top:1px}
+.ytg16 .yt small{font-family:var(--f-body);font-weight:400;color:var(--mu);font-size:11.5px;margin-left:2px}
+.ytg16 .yt.top img{outline:3px solid var(--sun);outline-offset:2px}
+.ytg16 .yt.top small{color:var(--bf);font-weight:700}
+/* mingle character */
+.emo-grid{display:grid;grid-template-columns:repeat(var(--n,6),minmax(0,1fr));gap:10px;align-content:start}
+.emo-grid li{display:grid;place-items:center;aspect-ratio:1;min-height:0;min-width:0;background:#fff;border-radius:14px;padding:12%}
+.emo-grid img{display:block;width:100%;height:100%;object-fit:contain;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.emo-grid li:hover img{transform:scale(1.1) rotate(-4deg)}
+.emo-grid.proc li{aspect-ratio:auto;padding:14px 10px 10px;gap:6px;background:var(--b-mint)}
+.emo-grid.proc{--n:4}
+.emo-grid.proc img{height:clamp(54px,6vw,80px);width:100%}
+.emo-grid.proc span{font-size:12px;color:var(--mu)}
+.pref{display:grid;gap:8px;border-top:1.5px solid var(--bf);padding-top:12px}
+.pref ul{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px}
+.pref li{display:grid;justify-items:center;gap:2px;text-align:center}
+.pref img{height:clamp(40px,4.4vw,56px);width:auto;max-width:100%;object-fit:contain}
+.pref b{font-family:var(--f-head);font-size:clamp(15px,1.5vw,18px);color:var(--ac);line-height:1.1;margin-top:4px}
+.pref span{font-size:11.5px;color:var(--mu);line-height:1.3}
+figure.art img{display:block;width:100%;height:auto;border-radius:10px}
+
+/* instatoon */
+.toons{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}
+.toon-ep{border:0;padding:0;background:none;cursor:pointer;text-align:left;font:inherit;color:inherit;display:grid;gap:6px;align-content:start}
+.toon-ep img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;border:1.5px solid var(--bf);background:#fff;transition:transform .25s}
+.toon-ep:hover img{transform:translateY(-3px) rotate(-1deg)}
+.toon-strip{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px}
+.toon-strip img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;background:#fff}
+.toon-ep span{font-size:clamp(11.5px,1vw,13px);line-height:1.4}
+.toon-view{border:0;padding:0;border-radius:12px;width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);background:#fff;color:#10283F}
+.toon-view.wide{width:min(1100px,calc(100vw - 32px))}
+.toon-view::backdrop{background:rgba(16,40,63,.55)}
+.toon-view header{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;background:#fff;border-bottom:1px solid rgba(16,40,63,.12);font-family:var(--f-head);font-weight:500;font-size:15px}
+.toon-view header button{border:1.5px solid #10283F;background:#fff;border-radius:999px;padding:2px 12px;font:inherit;cursor:pointer;color:inherit}
+.toon-view .pages{display:grid;gap:8px;padding:12px}
+.toon-view .pages img{display:block;width:100%;height:auto;border-radius:6px}
+
+/* bars & swatches */
+.next-more{display:grid;gap:6px;background:rgba(255,255,255,.6);border-radius:12px;padding:clamp(12px,1.6vw,18px)}
+.next-more .tx{font-size:clamp(13.5px,1.2vw,15px)}
+.save-flow{display:grid;gap:8px}
+.save-src{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.save-src li{display:grid;gap:2px;justify-items:start;padding:10px 12px;border-radius:12px;background:var(--b-mint);border:1px solid var(--ln)}
+.save-src svg{color:var(--ac);margin-bottom:2px}
+.save-src b{font-family:var(--f-head);font-size:clamp(13px,1.2vw,15px)}
+.save-src span{font-size:12px;color:var(--mu);line-height:1.35}
+.save-arrow{margin:0;font-size:12.5px;color:var(--mu);padding-left:4px}
+.save-result{display:grid;gap:3px;padding:12px 14px;border-radius:12px;border:1.5px dashed var(--mu);background:transparent}
+.save-result b{font-family:var(--f-head);font-size:clamp(16px,1.6vw,20px);color:var(--bf)}
+.save-result span{font-size:clamp(12.5px,1.1vw,14px);color:var(--mu)}
+.comment-shots{display:grid;gap:6px;max-width:440px}
+.comment-shots img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--ln);background:#fff}
+.dz-head{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(18px,3vw,40px);align-items:end;padding-bottom:clamp(12px,1.6vw,18px);border-bottom:1px solid var(--ln)}
+.dz-head .t-lg{font-size:clamp(22px,2.7vw,32px)}.dz-head .tx{color:var(--mu)}.dz-head .tx b{color:var(--bf)}
+.dz{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.4vw,16px);align-items:stretch}
+.dz article{display:flex;flex-direction:column;gap:6px;background:#fff;border:1px solid rgba(16,40,63,.12);border-radius:14px;padding:clamp(14px,1.6vw,20px)}
+.dz-tag{font-family:var(--f-serif);font-size:13px;color:var(--ac);letter-spacing:.02em}
+.dz h4{font-family:var(--f-head);font-weight:700;font-size:clamp(16px,1.6vw,19px);line-height:1.35;margin:-2px 0 2px}
+.dz-ln{font-size:clamp(13px,1.2vw,14.5px);line-height:1.6}
+.dz-ln i{display:block;font-style:normal;font-size:12px;font-weight:600;color:var(--mu)}
+.dz-to{margin-top:auto;padding-top:10px;border-top:1px dashed var(--ln);font-size:clamp(13.5px,1.25vw,15px);font-weight:600;line-height:1.55;color:var(--bf)}
+@media (max-width:860px){.dz-head,.dz{grid-template-columns:1fr}}
+.turn-row{border-top:1px solid var(--ln);padding-top:10px}
+.turn-row.turn-top{border-top:0;border-bottom:1px solid var(--ln);padding:0 0 12px}
+.chat{display:grid;gap:9px;padding:16px 18px;border-radius:16px;background:rgba(255,255,255,.55);border:1px solid var(--ln)}
+.chat-day{margin:0;justify-self:center;font-size:11px;color:var(--mu);background:var(--bb);padding:1px 10px;border-radius:999px}
+.bubble{margin:0;max-width:88%;padding:9px 14px;border-radius:16px;font-size:clamp(13.5px,1.3vw,16px);line-height:1.45}
+.bubble.me{justify-self:end;background:var(--bf);color:var(--bb);border-bottom-right-radius:4px}
+.bubble.ai{justify-self:start;background:#fff;border:1px solid var(--ln);border-bottom-left-radius:4px}
+.bubble.ai b{display:block;font-size:11.5px;color:var(--ac);margin-bottom:1px}
+.chat-result{margin:4px 0 0;justify-self:center;font-size:14px;color:var(--mu)}
+.chat-result b{font-family:var(--f-head);color:var(--bf)}
+.handoff{display:grid;gap:6px;border-top:1px solid var(--ln);padding-top:12px}
+.handoff .tx{font-size:clamp(13.5px,1.2vw,15px)}
+.theme-compare{display:grid;gap:10px;border-top:1px solid var(--ln);padding-top:10px}
+.theme-compare .sw i{width:44px;height:44px}
+.theme-compare .sw{gap:8px}
+.tc-row{display:grid;gap:6px}
+.tc-ai .sw i{border-radius:50%}
+.theme-compare .sw.sw-sm i,.sw.sw-sm i{width:30px;height:30px}
+.sw.sw-sm span{font-size:11px}
+.tc-ai{opacity:.8}
+.tc-arrow{margin:0;color:var(--ac);font-size:16px;line-height:1}
+
+.sw{display:flex;gap:10px;flex-wrap:wrap}
+.sw i{display:block;width:54px;height:54px;border-radius:50%;border:1.5px solid var(--bf)}
+.sw span{font-size:12px;display:block;text-align:center;margin-top:4px;color:var(--mu)}
+.tl{border-left:2px solid var(--bf);margin-left:6px;display:grid;gap:12px}
+.tl li{position:relative;padding-left:20px;font-size:clamp(13.5px,1.25vw,15.5px);line-height:1.55}
+.tl li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--ac);border:2px solid var(--bb)}
+.tl b{font-family:var(--f-head);font-weight:700;font-size:1em;color:var(--ac);margin-right:8px}
+.q{font-family:var(--f-serif);font-weight:300;font-size:clamp(15px,1.5vw,18px);line-height:1.55}
+.q small{display:block;color:var(--mu);font-family:var(--f-body);font-size:.78em;margin-top:2px}
+.retro{border-top:1.5px solid var(--bf);padding-top:14px;display:grid;gap:10px}
+.btn{display:inline-block;justify-self:start;padding:7px 18px;border-radius:999px;background:var(--bf);color:var(--bb);text-decoration:none;font-weight:700;font-size:14.5px}
+
+/* floating index */
+.fab{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;background:#10283F;color:#FFFAE6;text-decoration:none;
+  padding:9px 18px;border-radius:999px;font-weight:700;font-size:14px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+
+@media (max-width:860px){
+  .board{aspect-ratio:auto;padding:26px 20px 40px}
+  .cols,.c12,.c21,.cprof,.cA,.cB,.cset{grid-template-columns:minmax(0,1fr)}
+  .set-shot{max-width:240px}
+  .c3,.c4{grid-template-columns:minmax(0,1fr)}
+  .meta{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rows li,.rows a.row{grid-template-columns:2.4em minmax(0,1fr)}
+  .rows .cat{grid-column:2;text-align:left}
+  .phones{justify-content:flex-start;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x mandatory}
+  .phone{flex:0 0 min(210px,62vw);scroll-snap-align:start}
+  .slot.photo,img.photo{max-width:220px}
+  .prof-top{grid-template-columns:96px minmax(0,1fr);align-items:center;row-gap:16px}
+  .prof-top>.stack{display:contents}
+  .prof-top .prof-lead,.prof-career{grid-column:1/-1}
+  .prof-info{grid-template-columns:minmax(0,1fr)}
+  .ytg{--n:2 !important}
+  .ytg16{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .toons,.toon-strip{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .guide-grid{grid-template-columns:minmax(0,1fr)}
+  .reel-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nums-sm{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+  .spec{grid-template-columns:minmax(0,1fr) !important}
+  .pref ul{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:14px}
+  .emo-grid{--n:3}
+  .emo-grid.proc{--n:4}
+  .t-hero{font-size:clamp(60px,22vw,120px)}
+}
+/* 스크롤하면 글자가 아래에서 떠오르며 나타남 (JS가 켜졌을 때만) */
+.js-reveal .reveal{opacity:0;transform:translateY(32px)}
+.js-reveal .reveal.is-show{opacity:1;transform:none;
+  transition:opacity .9s cubic-bezier(.22,1,.36,1) var(--d,0s),transform .9s cubic-bezier(.22,1,.36,1) var(--d,0s)}
+/* 표지: Portfolio 글자가 한 자씩 타이핑되고, 끝나면 나머지가 떠오름 (JS가 켜졌을 때만) */
+.type-h .ch{display:none}
+.type-h .ch.on{display:inline}
+.type-h .caret{display:inline-block;width:.045em;height:.78em;margin-left:.05em;background:currentColor;vertical-align:-.04em;animation:caret .7s steps(1) infinite;transition:opacity .6s}
+.type-h .caret.gone{opacity:0;animation:none}
+@keyframes caret{50%{opacity:0}}
+.cover-wait{opacity:0;transform:translateY(18px)}
+.js-type #top>.kick:not(.cover-in),.js-type #top>.t-lg:not(.cover-in),.js-type #top>.tx:not(.cover-in){opacity:0}
+.js-type #top .t-hero:not(.type-h){visibility:hidden}
+.cover-in{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js-reveal .reveal{opacity:1;transform:none;transition:none}}
+@media print{.js-reveal .reveal{opacity:1;transform:none}}
+</style>
+
+<a class="fab" href="#toc" aria-label="목차로 이동">목차 ↑</a>
+
+<main class="deck">
+
+<!-- 01 표지 -->
+<section class="board b-green b-center" id="top">
+  <p class="kick">2026</p>
+  <h1 class="t-hero" style="font-size:clamp(64px,17vw,210px)">Portfolio</h1>
+  <p class="tx">AI 웹앱 · 콘텐츠 기획 · 영상<br>양예지</p>
+</section>
+
+<!-- 02 프로필 -->
+<section class="board b-cream" id="profile">
+  <p class="kick">Profile</p>
+  <div class="prof-top">
+    <img class="photo" src="media/profile.jpg" width="900" height="1157" alt="양예지 증명사진">
+    <div class="stack" style="gap:14px">
+      <h2 class="t-lg prof-h">불편을 발견하면,<br>일단 <span class="hl">만들어 보는</span> 사람</h2>
+      <p class="tx prof-lead"><span class="lead-main">1년 넘게 해외에서 디지털 노마드로 생활했고, 한 달 살기 정보를 나누는 여행 유튜브 채널을 운영 중입니다. 이전에는 MBTI 콘텐츠 PD로 용어 체계와 캐릭터를 만들었습니다. 최근에는 개발 지식 없이 AI를 도구로 삼아 개발을 익히며 3주 만에 웹앱 〈인용함〉을 <span style="white-space:nowrap">기획·제작·배포했습니다.</span></span><span class="lead-last">불편한 지점을 찾고, 익숙한 방식과 다르게 풀어 보는 일을 좋아합니다.</span></p>
+    </div>
+    <div class="prof-career">
+      <p class="t-md">Career</p>
+      <ul class="rows two">
+        <li><span class="ti">〈난나의 한달일기〉 유튜브 운영</span><span class="cat">2025.6 ~ 현재</span></li>
+        <li><span class="ti">〈마인드밍글〉 콘텐츠 PD</span><span class="cat">2023.1 ~ 2023.12</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="prof-info">
+    <dl class="kv">
+      <dt>이름</dt><dd>양예지</dd>
+      <dt>생년월일</dt><dd>1999.12.24</dd>
+      <dt>이메일</dt><dd><a href="mailto:yejee3514@gmail.com">yejee3514@gmail.com</a> <span class="sm">개인</span><br><a href="mailto:onemonthnanna@gmail.com">onemonthnanna@gmail.com</a> <span class="sm">유튜브</span></dd>
+      <dt>채널</dt><dd><a href="https://www.youtube.com/@onemonthnanna" target="_blank" rel="noopener">YouTube</a> · <a href="https://www.instagram.com/nanna1month/" target="_blank" rel="noopener">Instagram</a></dd>
+    </dl>
+    <dl class="kv">
+      <dt>Education</dt><dd>서울시립대학교 경영학과 졸업</dd>
+      <dt>Skill</dt><dd>콘텐츠 기획 · 영상 편집 · 썸네일·제목 기획<br>캐릭터 디자인 · AI 활용 웹앱 제작</dd>
+      <dt>Tools</dt><dd>Premiere Pro · CapCut · Photoshop · Procreate<br>ChatGPT · Claude · Notion<br><span class="sm">웹앱 배포</span> GitHub · Vercel · Supabase</dd>
+    </dl>
+  </div>
+</section>
+
+<!-- 03 목차 -->
+<section class="board b-sun" id="toc">
+  <p class="kick">Contents</p>
+  <h2 class="t-xl">네 개의 프로젝트</h2>
+  <ul class="rows toc">
+    <li><a class="row" href="#p1"><span class="no">01</span><span class="ti">인용함 — AI 웹앱</span><span class="cat">기획 · 개발 · 배포 / 혼자</span></a></li>
+    <li><a class="row" href="#p2"><span class="no">02</span><span class="ti">난나의 한달일기 — 여행 유튜브</span><span class="cat">기획 · 촬영 · 편집 / 혼자</span></a></li>
+    <li><a class="row" href="#p3"><span class="no">03</span><span class="ti">한달살기 릴스 시리즈</span><span class="cat">숏폼 기획 · 촬영 · 내레이션 · 편집</span></a></li>
+    <li><a class="row" href="#p4"><span class="no">04</span><span class="ti">마인드밍글 — 채널 PD</span><span class="cat">용어 · 캐릭터 · 콘텐츠 방향</span></a></li>
+  </ul>
+  <p class="sm">제목을 누르면 해당 프로젝트 커버로 이동합니다.</p>
+</section>
+
+<!-- ================= P1 인용함 ================= -->
+<section class="board b-leaf" id="p1">
+  <p class="kick">Project 01</p>
+  <h2 class="t-xl">인용함 ✳<br><span class="hl">영상 + 그때의 내 생각</span></h2>
+  <p class="tx">여러 플랫폼에 흩어진 영상을 “왜 저장했는지”까지 함께 쌓는 개인 아카이브 웹앱. 기획부터 서버 연동, 배포까지 AI(ChatGPT, 이후 Claude)와 대화하며 혼자 진행했습니다.</p>
+  <dl class="meta">
+    <div><dt>참여</dt><dd>1인 (기획·디자인·개발)</dd></div>
+    <div><dt>ROLE</dt><dd>기획 · 디자인 · AI 협업 개발 · 배포</dd></div>
+    <div><dt>CATEGORY</dt><dd>Mobile Web App<br>2026.10.9 ~</dd></div>
+    <div><dt>TOOLS</dt><dd>React · TypeScript · Vite · Supabase · GitHub · Vercel · ChatGPT · Claude</dd></div>
+  </dl>
+  <a class="btn" href="https://inyeon-app-amber.vercel.app" target="_blank" rel="noopener">인용함 웹앱 열어 보기 ↗</a>
+</section>
+
+<section class="board b-mint">
+  <p class="kick">01 · 시작</p>
+  <div class="cols cA" style="align-items:start">
+    <div class="stack" style="gap:14px">
+      <h3 class="t-lg nowrap-lines"><span>AI로 직접</span><br><span class="hl">만들어 보고 싶었다</span></h3>
+      <p class="tx">인용함을 만든 이유는 불편함 하나만이 아니었습니다. AI 개발을 직접 시작해 보고, 배워 보고 싶었어요. 그래서 ChatGPT에게 하나하나 물어 가며 감을 익혔고, 대화 속에서 평소의 불편이 아이디어가 됐습니다.</p>
+      <p class="sm">오른쪽은 2026년 10월 9~10일의 대화를 요약한 것이에요.</p>
+    </div>
+    <div class="chat" aria-label="ChatGPT와 나눈 첫 대화 요약">
+      <p class="bubble me">웹앱이나 게임을 만들어 보고 싶어</p>
+      <p class="bubble ai"><b>ChatGPT</b>좋아, 그럼 아이디어부터 정해 보자</p>
+      <p class="bubble me">저장해 두고 다시 안 보는 영상들… 이게 늘 불편했어</p>
+      <p class="bubble ai"><b>ChatGPT</b>직접 겪는 불편에서 출발한 게 좋은 점이야</p>
+      <p class="bubble me">X 인용처럼, 영상에 그때의 내 생각을 남기면 어때?</p>
+      <p class="bubble ai"><b>ChatGPT</b>그게 다른 저장 앱과 다른 점이 될 수 있겠다</p>
+      <p class="chat-result">→ <b>인용함 ✳</b> 영상 + 그때의 내 생각</p>
+    </div>
+  </div>
+</section>
+
+<section class="board b-cream">
+  <p class="kick">02 · 문제 발견</p>
+  <div class="cols c11" style="align-items:start">
+    <div class="stack" style="gap:16px">
+      <h3 class="t-lg nowrap-lines"><span>“저장했는데,</span><br><span>왜 저장했더라?”</span></h3>
+      <div class="save-flow">
+        <ul class="save-src">
+          <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg><b>유튜브</b><span>나중에 볼 동영상</span></li>
+          <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h10a1 1 0 0 1 1 1v17l-6-4-6 4V4a1 1 0 0 1 1-1z"/></svg><b>인스타그램</b><span>릴스 저장</span></li>
+          <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 10 14"/><path d="M21 3l-7 18-4-7-7-4z"/></svg><b>카카오톡</b><span>나에게 보내기</span></li>
+        </ul>
+        <p class="save-arrow" aria-hidden="true">↓ 그리고…</p>
+        <div class="save-result"><b>현저히 낮은 재방문율</b><span>어쩌다 다시 들어가도, 그때의 감각이나 생각은 남아 있지 않았어요.</span></div>
+      </div>
+    </div>
+    <div class="stack" style="gap:8px">
+      <p class="tx">나만 그런 게 아니었어요. 유튜브 운동 추천 영상 댓글에는 “오늘도 나에게 보내본다”, “이런거 50개쯤 있는데 보내기만 한다” 같은 댓글에 <span class="hl">공감의 좋아요가 몇 백 개씩</span> 달려 있었습니다.</p>
+      <figure class="cap comment-shots">
+        <img src="media/comment-save-1.jpg" width="774" height="165" loading="lazy" alt="유튜브 댓글: 오늘도 나에게 보내본다, 좋아요 253">
+        <img src="media/comment-save-2.jpg" width="774" height="300" loading="lazy" alt="유튜브 댓글: 또 일단 저장, 좋아요 112. 답글: 저랑 똑같아서 웃음이 나오네요">
+        <figcaption>실제 유튜브 운동 추천 영상 댓글 · 아이디와 프로필은 가렸어요</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="board b-cream">
+  <p class="kick">03 · 설계 결정</p>
+  <div class="dz-head">
+    <h3 class="t-lg">“저장”이 아니라<br><span class="hl">“그 영상에 대한 내 생각”</span>을 쌓는 앱</h3>
+    <p class="tx">이미 Raindrop.io, mymind 같은 저장 앱이 많아서, 단순 저장만으로는 차별이 약했어요. 그래서 저장한 영상에 <b>한마디를 남기고</b>, 그 기록을 <b>개인 피드처럼</b> 훑어보는 앱으로 방향을 바꿨습니다.</p>
+  </div>
+  <div class="dz">
+    <article>
+      <p class="dz-tag">참고 ①</p>
+      <h4>인스타그램 저장</h4>
+      <p class="dz-ln"><i>좋았던 점</i>썸네일이 크게 보여 한눈에 들어옴</p>
+      <p class="dz-ln"><i>아쉬운 점</i>눌러 봐야 무슨 영상인지 알 수 있고, 검색이 불편함</p>
+      <p class="dz-to">→ 썸네일 옆에 제목·내 생각을 바로 보이게, 태그와 검색 추가</p>
+    </article>
+    <article>
+      <p class="dz-tag">참고 ②</p>
+      <h4>X(구 트위터) 인용 · 북마크</h4>
+      <p class="dz-ln"><i>좋았던 점</i>공유하면서 한마디를 남기는 ‘인용’, 피드처럼 훑는 감각</p>
+      <p class="dz-ln"><i>아쉬운 점</i>쌓인 북마크는 정리하기 어려움</p>
+      <p class="dz-to">→ 기록마다 내 생각 한 줄, 2열 카드 피드로 정리</p>
+    </article>
+    <article>
+      <p class="dz-tag">조건</p>
+      <h4>로그인 없이, 나 혼자 먼저</h4>
+      <p class="dz-ln"><i>바란 것</i>가입 없이 바로 쓰고, 맥북과 아이폰에서 같은 기록 보기</p>
+      <p class="dz-ln"><i>우선순위</i>개인 기록이 먼저, 남과 공유는 나중</p>
+      <p class="dz-to">→ ‘보관함 코드’ 하나로 어느 기기에서든 같은 기록 열기</p>
+    </article>
+  </div>
+</section>
+
+<section class="board b-ink">
+  <p class="kick">04 · 화면 시연 ① 시작과 저장</p>
+  <div class="cols c21">
+    <div class="phones">
+      <figure class="phone"><div class="scr"><video muted loop playsinline preload="metadata" poster="media/demo-vault.jpg" aria-label="새 보관함을 만들고 보관함 코드를 복사하는 화면"><source src="media/demo-vault.mp4?v=4" type="video/mp4"></video></div>
+        <p><b>보관함 만들기</b>로그인 없이 버튼 한 번, 열쇠인 코드를 복사</p></figure>
+      <figure class="phone"><div class="scr"><video muted loop playsinline preload="metadata" poster="media/demo-save.jpg" aria-label="유튜브 링크를 붙여넣고 생각과 태그를 남겨 저장한 뒤 수정하는 화면"><source src="media/demo-save.mp4?v=2" type="video/mp4"></video></div>
+        <p><b>인용 저장</b>제목은 자동으로, 내 생각과 태그는 직접</p></figure>
+    </div>
+    <div class="stack" style="gap:14px">
+      <h3 class="t-lg">쓰는 흐름 그대로</h3>
+      <p class="tx">영상을 보다 링크를 붙여넣고, 한마디를 남기면 끝. 저장한 기록은 상세 화면에서 원본 영상을 열거나 링크를 공유할 수 있어요.</p>
+      <div class="spec" style="--n:1;gap:10px">
+        <div><h4>수정 기능 <em class="mine">직접 제안</em></h4><p>영상 링크는 그대로 두고 제목·내 생각·태그만 고치게 했어요. 버튼은 기록을 읽는 데 방해되지 않게 닫기(X) 옆 연필 아이콘으로 옮겼습니다.</p></div>
+        <div><h4>공유 기능 <em class="mine">직접 제안</em></h4><p>종이비행기 버튼을 누르면 원본 링크와 [복사하기]가 뜨도록 만들었어요. 써 보니 연필 버튼과 헷갈려, 지금은 하단 ‘링크 공유’ 버튼으로 옮겼습니다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="board b-mint">
+  <p class="kick">05 · 화면 시연 ② 훑어보고 찾기</p>
+  <div class="cols cA">
+    <div class="phones" style="justify-content:flex-start">
+      <figure class="phone"><div class="scr"><video muted loop playsinline preload="metadata" poster="media/demo-search.jpg" aria-label="기록 22개를 카드와 목록으로 보고 태그와 검색으로 찾는 화면"><source src="media/demo-search.mp4" type="video/mp4"></video></div>
+        <p><b>개인 피드처럼</b>카드 ↔ 목록 보기, 태그 필터, 검색.</p></figure>
+    </div>
+    <div class="stack" style="gap:14px">
+      <h3 class="t-lg">쌓인 기록을<br>개인 피드처럼</h3>
+      <p class="tx">기록이 쌓이면 피드처럼 쭉 내려 보며 훑고, 필요할 땐 태그를 눌러 원하는 것만 모아 봅니다. 제목·코멘트·태그를 한 번에 찾는 검색도 있어요.</p>
+      <ul class="rows">
+        <li><span class="no">보기</span><span class="ti">2열 카드 피드 ↔ 목록 보기</span><span class="cat">카드 높이 고정</span></li>
+        <li><span class="no">태그</span><span class="ti">#AI, #게임, #여행 … 누르면 그것만</span><span class="cat">지인이 가장 좋아한 기능</span></li>
+        <li><span class="no">검색</span><span class="ti">제목·코멘트·태그 종합 검색</span><span class="cat">영상 속 예시 · “선물”</span></li>
+      </ul>
+      <p class="sm">썸네일이 없는 틱톡 기록(겨울 코디)은 태그를 보고 고른 기본 이미지로 보입니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="board b-leaf">
+  <p class="kick">06 · 화면 시연 ③ 테마와 설정</p>
+  <div class="cols cA">
+    <div class="phones" style="justify-content:flex-start">
+      <figure class="phone"><div class="scr"><video muted loop playsinline preload="metadata" poster="media/demo-theme.jpg" aria-label="설정에서 테마 6가지를 차례로 바꿔 보는 화면"><source src="media/demo-theme.mp4?v=2" type="video/mp4"></video></div>
+        <p><b>내 색으로</b>테마 6가지를 바꾸면 화면 전체 색이 함께 바뀝니다.</p></figure>
+    </div>
+    <div class="stack" style="gap:8px">
+      <h3 class="t-lg">테마 6가지,<br>색은 제가 직접 조합했습니다</h3>
+      <p class="tx">개인 기록은 꾸미는 재미가 있어야 한다고 생각했어요. AI가 준 선택지를 그대로 쓰지 않고, 배경색과 포인트색 조합을 제가 직접 만들어 제시했어요. 밝기를 보며 계속 조정했고, 마음에 들지 않는 조합은 이름까지 붙여 새로 제안했습니다.</p>
+      <div class="theme-compare">
+        <div class="tc-row tc-ai"><p class="sm">AI의 첫 제안 · 포인트색만 바뀌는 5가지</p>
+          <div class="sw sw-sm"><div><i style="background:#B66C4F"></i><span>테라코타</span></div><div><i style="background:#7C8453"></i><span>올리브</span></div><div><i style="background:#6689A3"></i><span>블루</span></div><div><i style="background:#9583B5"></i><span>라벤더</span></div><div><i style="background:#C47F8A"></i><span>로즈</span></div></div></div>
+        <div class="tc-row"><p class="sm"><b>직접 만든 조합</b> · 배경색 + 포인트색 6가지</p>
+          <div class="sw"><div><i style="background:linear-gradient(135deg,#FAF7F0 50%,#B7B09E 50%)"></i><span>쿨 베이지</span></div><div><i style="background:linear-gradient(135deg,#FFFBEA 50%,#FFCED8 50%)"></i><span>아이스크림</span></div><div><i style="background:linear-gradient(135deg,#F6E2E9 50%,#84A282 50%)"></i><span>핑크 그린</span></div><div><i style="background:linear-gradient(135deg,#F0FFF4 50%,#AEE2FF 50%)"></i><span>민트 블루</span></div><div><i style="background:linear-gradient(135deg,#FBEFEF 50%,#C5B3D3 50%)"></i><span>코튼 캔디</span></div><div><i style="background:linear-gradient(135deg,#F1F3E0 50%,#96A78D 50%)"></i><span>말차 밀크</span></div></div></div>
+      </div>
+      <p class="q">“333333은 너무 티가 안나서 444444로 했어.”<small>글자색도 안내받은 값 그대로가 아니라 눈으로 보고 조정</small></p>
+    </div>
+  </div>
+</section>
+
+<section class="board b-cream">
+  <p class="kick">07 · 설정 탭</p>
+  <div class="cols cset">
+    <figure class="cap set-shot"><video muted loop playsinline preload="metadata" poster="media/demo-settings-poster.jpg" width="560" height="1076" aria-label="설정에서 보관함 코드를 보고 복사한 뒤, 기록을 파일로 내보내는 화면"><source src="media/demo-settings.mp4" type="video/mp4"></video><figcaption>코드 보기·복사 → 기록 내보내기</figcaption></figure>
+    <div class="stack" style="gap:14px">
+      <h3 class="t-lg">“코드를 잃어버리면?”에서<br>시작한 설정 탭</h3>
+      <p class="tx">로그인 없이 코드 하나로 여는 구조라, 연결이 끊기면 코드를 다시 찾을 방법이 없었어요. 앱 안에서 내 코드를 다시 보는 기능을 제안한 것이 설정 탭의 시작이었습니다.</p>
+      <div class="spec">
+        <div><h4>보관함 코드 보기·복사 <em class="mine">직접 제안</em></h4><p>“연결 해제가 되면 코드를 찾을 방법이 없잖아?” 앱 안에서 언제든 코드를 확인하고 복사할 수 있게 했어요.</p></div>
+        <div><h4>팝업으로 열기 <em class="mine">직접 제안</em></h4><p>화면이 아래로 밀리지 않고 새 인용처럼 겹쳐 뜨게. 배경은 덜 어둡게 남겨 테마가 바뀌는 걸 바로 보이게 했어요.</p></div>
+        <div><h4>기록 백업 <em class="mine">직접 제안</em></h4><p>구글 계정 백업을 구상했고, 먼저 기록 전체를 파일로 내보내는 백업으로 구현했어요.</p></div>
+        <div class="spec-plan"><h4>공유용 코드 <em class="mine">직접 제안</em><em class="mine mine-soft">설계까지</em></h4><p>태그를 골라 읽기 전용으로 보여 주는 코드. 수정·삭제는 막는 구조까지 설계했고, 아직 구현하지 않았어요.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="board b-cream">
+  <p class="kick">08 · 문제 해결</p>
+  <h3 class="t-lg">막혔던 장면 셋</h3>
+  <div class="cols c3">
+    <div class="stack"><p class="t-md">기록이 사라진 듯 보였다</p><p class="tx">며칠 뒤 앱을 켜니 아이폰에 저장한 기록이 보이지 않았습니다. 지워진 게 아니라, 와이파이가 바뀌며 접속 주소가 달라졌고 기록은 주소마다 따로인 브라우저 공간에 있었어요. 어디서 열어도 같은 기록이 보이게 서버 저장(Supabase)으로 옮기고, 로그인 대신 보관함 코드를 택했습니다.</p></div>
+    <div class="stack"><p class="t-md">돈 쓰지 않고 썸네일 띄우기</p><p class="tx">인스타그램 썸네일은 유료 API부터 시험했지만, 계속 쓰면 비용이 든다는 걸 알고 “다른 방법 없을까?” 다시 물었습니다. 공개 게시물의 미리보기 이미지를 서버에서 직접 읽는 무료 방식으로 바꿔, 릴스와 일반 게시물 모두 띄웠습니다.</p></div>
+    <div class="stack"><p class="t-md">다른 기록이 덮어써졌다</p><p class="tx">수정과 닫기를 반복하며 테스트하다, 2번째 기록이 1번째 기록 내용으로 바뀐 걸 발견했습니다. 더 수정하지 않고 증상(링크는 그대로, 닫아도 수정 화면이 남음)을 정리해 원인을 좁혔고, 수정 대상을 고정하고 닫을 때 상태를 비우게 고쳤습니다.</p></div>
+  </div>
+  <p class="sm">그 밖에 : 서버 연결이 안 되던 문제(서버 로그에 요청이 없다는 단서로 환경설정 파일의 오타를 찾음), 연필 아이콘이 기기마다 다르게 보이던 문제(특수문자 → SVG 아이콘), 배포 후 기본 배경색이 예전 색으로 나오던 문제(코드의 기본값이 예전 색으로 남아 있었음).</p>
+</section>
+
+<section class="board b-peach">
+  <p class="kick">09 · 과정</p>
+  <div class="cols c12" style="align-items:start">
+    <div class="stack" style="gap:14px">
+      <h3 class="t-lg">ChatGPT와 3주</h3>
+      <div class="handoff">
+        <p class="t-md">이후, Claude로 인수인계</p>
+        <p class="tx">다른 AI의 개발 방식도 배워 보려 10월 27일 Claude에게 넘겼어요. 가장 먼저 인수인계 문서와 실제 코드를 대조하고, 보관함 코드와 데이터 권한이 안전한지 점검한 뒤, 대시보드에만 있던 서버 코드를 프로젝트에 백업했습니다.</p>
+      </div>
+    </div>
+    <ol class="tl">
+      <li><b>10/9–10</b>기획 — 앱으로, X 북마크에서 출발한 “내 생각 기록”으로</li>
+      <li><b>10/12</b>첫 화면 — 맥북과 아이폰에서 첫 저장 성공</li>
+      <li><b>10/14</b>기록이 안 보이는 문제 발견 — 로그인 없이 같은 기록을 보기로</li>
+      <li><b>10/19–20</b>서버 저장(Supabase) · 보관함 코드 연결</li>
+      <li><b>10/20–21</b>다듬기 — 순서·글씨 크기·수정·공유 버튼을 직접 요청</li>
+      <li><b>10/22</b>썸네일 · 설정 탭 — 막히면 다른 길로</li>
+      <li><b>10/23</b>테마 · 배포 — 직접 만든 색 조합, GitHub · Vercel</li>
+      <li><b>10/27</b>코드 백업 · Claude로 인수인계 — “모르는 부분은 ‘불명확’이라고 표시해줘”</li>
+      <li><b>이후</b>Claude와 점검 · 디자인 · 기능 다듬기</li>
+    </ol>
+  </div>
+</section>
+
+<section class="board b-cream">
+  <p class="kick">10 · 태그 기반 기본 이미지 <em class="mine">직접 제안</em></p>
+  <div class="cols cB">
+    <div class="stack" style="gap:14px">
+      <h3 class="t-lg">썸네일이 없을 땐<br>태그를 보고 고른다</h3>
+      <p class="tx">썸네일이 없거나 만료된 기록은 모두 같은 기본 이미지로 떠서, 피드에서 무슨 기록인지 한눈에 구분되지 않았어요. 그래서 태그를 보고 분류에 맞는 이미지를 고르게 했습니다. 사진이 아니라 코드로 그린 SVG 일러스트라 주소가 사라져 깨질 일도, 저작권 문제도 없어요.</p>
+      <div class="chips tag-pick" aria-hidden="true"><span class="chip on" data-i="0">여행</span><span class="chip" data-i="1">맛집</span><span class="chip" data-i="2">카페</span><span class="chip" data-i="3">뷰티</span><span class="chip" data-i="4">게임</span><span class="chip" data-i="5">운동</span><span class="chip" data-i="6">AI</span><span class="chip" data-i="7">음악</span><span class="chip" data-i="8">영화</span><span class="chip" data-i="9">패션</span><span class="chip" data-i="10">반려동물</span><span class="chip" data-i="11">공부</span><span class="chip" data-i="12">코딩</span><span class="chip" data-i="13">캠핑</span><span class="chip" data-i="14">인테리어</span><span class="chip" data-i="15">재테크</span><span class="chip" data-i="16">일상</span><span class="chip" data-i="17">그 외 · 하늘</span></div>
+      <figure class="tag-preview" aria-live="polite">
+        <img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23BFE3FF%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23D9F4E6%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22150%22%20r%3D%2282%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.5%22/%3E%3Cg%20transform%3D%22translate%28140%2090%29%20scale%285%29%22%20fill%3D%22none%22%20stroke%3D%22%234C8DBF%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M20%2010c0%206-8%2012-8%2012s-8-6-8-12a8%208%200%200%201%2016%200Z%22/%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2210%22%20r%3D%223%22/%3E%3C/g%3E%3C/svg%3E" width="400" height="300" alt="여행 분류 기본 이미지">
+        <figcaption><b>여행</b><span>#여행 #관광 #투어 #숙소 #호텔</span></figcaption>
+      </figure>
+    </div>
+    <div class="stack" style="gap:14px;align-self:center">
+      <figure class="cap"><img src="media/demo-tagimage.jpg?v=2" width="750" height="494" loading="lazy" alt="썸네일 없는 틱톡 기록에 태그를 보고 고른 티셔츠 기본 이미지가 보이는 카드"><figcaption>실제 화면 · 썸네일 없는 틱톡 기록(#겨울코디 #쇼핑)에 패션 이미지</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="board b-cream">
+  <p class="kick">11 · 회고</p>
+  <div class="cols cB retro-merge">
+    <div class="stack" style="gap:16px">
+      <h3 class="t-lg">AI는 구현을 도왔고,<br><span class="hl">문제 발견과 방향 결정</span>은 내가</h3>
+      <div class="retro">
+        <p class="tx"><b>잘한 점</b> AI의 제안에 끌려가지 않고 방향·기능·색을 먼저 제안했고, 직접 써 보며 문제를 찾아 고쳤어요. 그 과정에서 AI 웹앱이 기획부터 배포까지 어떻게 만들어지는지 직접 체득했고, AI를 ‘도구를 만드는 도구’로 적절히 활용했습니다. VS Code에서 코드를 직접 고쳐 보며 기초 코딩도 배웠어요.</p>
+        <p class="tx"><b>아쉬운 점</b> 읽기 전용 ‘공유용 코드’는 설계까지만 했어요. 누구나 보관함을 만들 수 있고 글자 수 제한·복원 기능이 없는 점도 대중 공개 전에 채워야 할 빈칸입니다.</p>
+        <p class="tx"><b>다음</b> 지인이 꼽은 ‘링크 붙여넣기의 번거로움’부터 줄이고, 데이터가 안전하다는 확신이 들면 공개 범위를 넓히기.</p>
+      </div>
+    </div>
+    <div class="stack friend-box">
+      <p class="t-md">지인에게 먼저 공개</p>
+      <p class="sm">개인의 기록을 다루는 앱이라, 데이터가 날아갈까 봐 대중 공개는 미루고 지인에게만 써 보게 했어요.</p>
+      <p class="q">“잘 만들었고, <span class="hl">정리하는 맛</span>이 있다.”</p>
+      <p class="q">“태그를 눌러서 원하는 정보만 모아 볼 수 있어서 좋았다.”</p>
+      <p class="q">“하지만 링크를 붙여넣는 게 조금 귀찮다.”</p>
+      <a class="btn" href="https://inyeon-app-amber.vercel.app" target="_blank" rel="noopener">인용함 웹앱 열어 보기 ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= P2 난나의 한달일기 ================= -->
+<section class="board b-sun" id="p2">
+  <p class="kick">Project 02</p>
+  <h2 class="t-xl">난나의 한달일기<br><span class="hl">혼자 만드는 여행 채널</span></h2>
+  <p class="tx">한 달 이상 머문 도시의 비용, 숙소, 카페와 맛집을 기록하는 유튜브 채널. 기획부터 촬영, 편집, 업로드까지 혼자 합니다.</p>
+  <dl class="meta">
+    <div><dt>참여</dt><dd>1인 운영</dd></div>
+    <div><dt>ROLE</dt><dd>기획 · 촬영 · 편집 · 채널 운영</dd></div>
+    <div><dt>CATEGORY</dt><dd>YouTube · 여행 정보<br>2025.6 ~ 현재</dd></div>
+    <div><dt>TOOLS</dt><dd>CapCut</dd></div>
+  </dl>
+  <a class="btn" href="https://www.youtube.com/@onemonthnanna" target="_blank" rel="noopener">유튜브 채널 ‘난나의 한달일기’ ↗</a>
+</section>
+
+<section class="board b-cream">
+  <p class="kick">01 · 채널 한눈에</p>
+  <div class="cols c3">
+    <div class="stack"><p class="big-n">2.5천</p><p class="tx">구독자</p></div>
+    <div class="stack"><p class="big-n">60+</p><p class="tx">직접 편집한 영상</p></div>
+    <div class="stack"><p class="big-n">10만+</p><p class="tx">대표 영상 조회수</p></div>
+  </div>
+  <div class="cols c12" style="align-items:start">
+    <div class="stack" style="gap:10px">
+      <p class="tx">시작한 이유는 혼자 만족하기보다 정보를 나누고 싶어서였습니다. 현지인 맛집과 카페를 잘 찾아내는 편이었고, 함께 머물던 부부에게 관광 루틴을 안내해 준 경험이 시작이 됐어요.</p>
+      <p class="sm">유료 협업 2건 (Temu)</p>
+    </div>
+    <div class="ytg ytg-nanna" style="--n:3"><a class="yt" href="https://youtu.be/PoRSOXrhEh4" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/PoRSOXrhEh4/mqdefault.jpg" loading="lazy" alt=""><span>채널 첫 영상 · 치앙마이 한달살기 시작 (VLOG) <small>조회수 1.1만</small></span></a><a class="yt" href="https://youtu.be/dS1NitwIVpQ" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/dS1NitwIVpQ/mqdefault.jpg" loading="lazy" alt=""><span>치앙마이 맛집 추천 (정보 영상) <small>조회수 3.0만</small></span></a><a class="yt" href="https://youtu.be/sHxgCnuIGLI" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/sHxgCnuIGLI/mqdefault.jpg" loading="lazy" alt=""><span>테무 여행템 추천 (유료 협업) <small>조회수 4.2천</small></span></a></div>
+  </div>
+</section>
+
+<section class="board b-leaf">
+  <p class="kick">02 · 성장 과정</p>
+  <div class="cols c11" style="align-items:start">
+    <div class="stack" style="gap:14px">
+      <h3 class="t-lg">반응이 없어도<br>매주 한 편씩</h3>
+      <p class="tx">6월 11일 첫 영상을 올렸을 때는 조회수가 아주 저조했어요. 정보력과 콘텐츠에는 자신이 있었기에 멈추지 않고 일주일에 한 편씩 영상을 더 올렸고, 7월 22일 첫 영상의 조회수가 갑자기 솟았습니다.</p>
+      <ol class="tl">
+        <li><b>6/11</b>채널 첫 영상 업로드 — 반응이 거의 없음</li>
+        <li><b>이후</b>매주 1편씩 5편 더, 썸네일과 제목을 계속 바꿔 보며</li>
+        <li><b>7/22</b>첫 영상 하루 조회수 417회로 급상승</li>
+      </ol>
+    </div>
+    <figure class="cap"><img src="media/nanna-views.jpg" width="900" height="657" loading="lazy" alt="채널 첫 영상의 2025년 일별 조회수 그래프. 7월 22일 하루 417회로 가장 높고, 2025년 합계 9,114회"><figcaption>채널 첫 영상의 2025년 일별 조회수 (유튜브 스튜디오)</figcaption></figure>
+  </div>
+</section>
+
+<section class="board b-cream">
+  <p class="kick">03 · 대표 영상</p>
+  <div class="cols cB">
+    <div class="stack" style="gap:16px">
+      <a class="yt yt-hero" href="https://youtu.be/UGgNI-uMYz4" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/UGgNI-uMYz4/maxresdefault.jpg" loading="lazy" alt="치앙마이 한달살기 총정리 영상 썸네일"><span class="play" aria-hidden="true">▶</span></a>
+      <div class="traffic">
+        <p class="sm">시청자가 이 영상을 찾은 방법 · 게시 이후 (유튜브 스튜디오)</p>
+        <div class="tbar" aria-hidden="true"><i style="--w:47.8%;--c:#10283F"></i><i style="--w:39%;--c:#2F6EA5"></i><i style="--w:9.6%;--c:#8CC6EE"></i><i style="--w:3.6%;--c:#C9D3DC"></i></div>
+        <ul class="tlegend">
+          <li><i style="--c:#10283F"></i>탐색 기능<b>47.8%</b></li>
+          <li class="em"><i style="--c:#2F6EA5"></i>YouTube 검색<b>39.0%</b></li>
+          <li><i style="--c:#8CC6EE"></i>추천 동영상<b>9.6%</b></li>
+          <li><i style="--c:#C9D3DC"></i>기타<b>3.5%</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="stack" style="gap:12px">
+      <h3 class="t-lg">치앙마이 총정리</h3>
+      <p class="tx">브이로그에 달리는 댓글 질문, 그리고 현지에서 만난 분들이 정보를 찾기 어려워하던 점에서 출발했습니다. 반년 가까이 머물며 쌓은 정보를 한 편에 담았습니다.</p>
+      <div class="stat-row"><div><b>10.4만</b><span>조회수</span></div><div><b>+804</b><span>이 영상으로 늘어난 구독자</span></div><div><b>1,306</b><span>좋아요</span></div><div><b>18분</b><span>영상 길이</span></div></div>
+      <p class="tx">조회수의 39%가 <span class="hl">YouTube 검색</span>에서 왔어요. 한달살기를 준비하는 사람들이 직접 찾아보는 정보 영상이 됐습니다.</p>
+      <p class="sm">준비 사항 · 날씨와 시기 · 항공권 · 숙소 고르는 법 · 보험 · 환전·결제 · 지역별 특징 · 실제 예산 · 필수 앱</p>
+      <a class="btn" href="https://youtu.be/UGgNI-uMYz4" target="_blank" rel="noopener">영상 보기 ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="board b-peach">
+  <p class="kick">04 · 시청자의 질문</p>
+  <h3 class="t-lg">댓글로 가장 자주 받은 질문 세 가지</h3>
+  <div class="cols c3">
+    <p class="q">“한 달 살면 경비가 얼마나 들어요?”<small>비용</small></p>
+    <p class="q">“숙소는 어디가 좋아요?”<small>잠잘 곳</small></p>
+    <p class="q">“혼자 여행하기에 치안은 괜찮나요?”<small>안전</small></p>
+  </div>
+  <div class="reply-row">
+    <div class="stack" style="gap:8px"><p class="tx">이 질문들에 답하는 총정리 영상을 만들었고, 실제로 <b>“도움이 되었다”</b>는 댓글이 이어졌어요.</p><p class="sm">실제 댓글 · 아이디와 프로필 사진은 가렸어요</p></div>
+    <div class="cmt-grid">
+      <img src="media/cmt-1.jpg" width="720" height="158" loading="lazy" alt="이틀 전 치앙마이에 처음 와서 막막했는데 많은 도움이 되었다는 댓글">
+      <img src="media/cmt-2.jpg" width="720" height="116" loading="lazy" alt="며칠 뒤 치앙마이에 가는데 좋은 정보를 많이 얻었다는 댓글">
+      <img src="media/cmt-5.jpg" width="720" height="115" loading="lazy" alt="첫 여행이라 걱정이 많았는데 참고하겠다는 댓글">
+    </div>
+  </div>
+</section>
+
+<section class="board b-mint compact">
+  <p class="kick">05 · 넓혀 간 도시</p>
+  <div class="cols c11" style="align-items:end">
+    <h3 class="t-lg">1년 8개월,<br>5개국 9개 도시</h3>
+    <p class="tx">2024년 9월부터 2026년 4월까지 디지털 노마드로 지냈어요. 치앙마이에서 통한 ‘브이로그 + 정보 영상’ 방식을 새 도시마다 다시 이어 가고 있고, 지금은 발리 편을 올리는 중이에요.</p>
+  </div>
+  <ol class="route"><li class=""><b>치앙마이</b><span>3개월</span></li><li class="home"><b>한국</b><span>2개월</span></li><li class=""><b>호치민</b><span>1개월</span></li><li class="key"><b>쿠알라룸푸르</b><span>1개월</span><em>정보 찾기가 강점이라 느끼고 유튜브 계획</em></li><li class="key"><b>치앙마이</b><span>2개월</span><em>촬영 시작</em></li><li class=""><b>빠이</b><span>1주</span></li><li class=""><b>방콕</b><span>1개월</span></li><li class="home"><b>한국</b><span>1개월</span></li><li class="now"><b>발리</b><span>1개월</span><em>지금 업로드 중</em></li><li class=""><b>호치민 · 무이네</b><span>1주</span></li><li class=""><b>달랏</b><span>1개월</span></li><li class=""><b>치앙마이</b><span>3개월</span></li><li class="home"><b>한국</b><span>1개월</span></li><li class=""><b>가오슝</b><span>1개월</span></li></ol>
+  <div class="ytg ytg-nanna" style="--n:5"><a class="yt" href="https://youtu.be/aUZAGxZtPtE" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/aUZAGxZtPtE/mqdefault.jpg" loading="lazy" alt=""><span>태국 빠이 · 2편 <small>시리즈 조회수 1.1만</small></span></a><a class="yt" href="https://youtu.be/dYWeg2gPWfY" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/dYWeg2gPWfY/mqdefault.jpg" loading="lazy" alt=""><span>태국 방콕 · 6편 <small>시리즈 조회수 3.0만</small></span></a><a class="yt" href="https://youtu.be/VqCHtzL7G2c" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/VqCHtzL7G2c/mqdefault.jpg" loading="lazy" alt=""><span>인도네시아 발리 · 3편 <em class="ing">연재 중</em> <small>시리즈 조회수 1.3만</small></span></a></div>
+</section>
+
+<section class="board b-cream">
+  <p class="kick">06 · 브랜드 협업</p>
+  <div class="cols cB" style="align-items:start">
+    <div class="stack" style="gap:14px">
+      <h3 class="t-lg">제안은 테무가,<br><span class="hl">방향은 내가</span></h3>
+      <p class="tx">테무가 이메일로 먼저 협업을 제안했어요. 조건은 8분 이상의 브랜디드 롱폼 영상과 제품 20만 원어치 지원(광고비 별도). 주제는 채널의 톤앤매너를 살려 ‘여행 추천템 테무깡’으로 제가 제안했고, 그대로 진행됐습니다.</p>
+      <div class="ytg" style="--n:2"><a class="yt" href="https://youtu.be/sHxgCnuIGLI" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/sHxgCnuIGLI/mqdefault.jpg" loading="lazy" alt=""><span>1탄 · 여행템 25가지 <small>조회수 4.2천</small></span></a><a class="yt" href="https://youtu.be/HKx0wuIiKk0" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/HKx0wuIiKk0/mqdefault.jpg" loading="lazy" alt=""><span>2탄 · 여행 꿀템 20가지 <small>조회수 1.1천</small></span></a></div>
+    </div>
+    <div class="stack" style="gap:14px">
+      <ol class="tl">
+        <li><b>제안</b>테무가 이메일로 먼저 연락</li>
+        <li><b>주제</b>‘여행 추천템 테무깡’을 직접 제안</li>
+        <li><b>선정</b>여행 필수 꿀템·감성 아이템 위주로 제품 직접 선정</li>
+        <li><b>제작</b>촬영 → 가편집 제출 → 큰 수정 없이 게시</li>
+        <li><b>2탄</b>테무가 다시 먼저 제안</li>
+      </ol>
+      <p class="q">“지난번의 협업을 통해 긍정적인 성과를 얻을 수 있어 감사드리며, 이번에도 함께 협업할 수 있기를 희망합니다!”<small>2탄을 제안하며 테무가 보낸 이메일</small></p>
+    </div>
+  </div>
+</section>
+
+<section class="board b-cream">
+  <p class="kick">07 · 회고</p>
+  <div class="cols c12">
+    <h3 class="t-xl">회고</h3>
+    <div class="retro">
+      <p class="tx"><b>잘한 점</b> 첫 영상에 반응이 거의 없을 때도 매주 한 편씩 이어 가며 썸네일과 제목을 바꿔 봤고, 한 달 뒤 첫 상승을 만들었어요. 시청자 질문에 답한 총정리 영상은 10만 회를 넘기며 “많은 도움이 됐다”는 댓글이 줄을 이었고, 조회수의 39%가 검색에서 들어오는 정보 영상이 됐어요. 이 방식을 빠이·방콕·발리로 이어 가고 있습니다. 브랜드 협업에서도 채널 톤에 맞는 주제를 직접 제안해 2탄까지 이어졌어요.</p>
+      <p class="tx"><b>아쉬운 점</b> 혼자 하는 채널이라 팀으로 일하는 경험은 다른 프로젝트에서 채워야 했어요. 일상을 솔직하게 담는 브이로그 특성상, 그 시기의 일상이 평범하면 영상도 힘이 약해져 조회수가 아쉬운 편들이 있었습니다.</p>
+      <p class="tx"><b>다음</b> 연재 중인 발리 편과 남은 촬영분을 이어 올리고, 도시마다 시청자 질문을 모아 총정리 영상으로 묶기.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= P3 릴스 ================= -->
+<section class="board b-mint" id="p3">
+  <p class="kick">Project 03</p>
+  <h2 class="t-xl">한달살기 릴스 시리즈<br><span class="hl">매일 찍고, 하루 한 편</span></h2>
+  <p class="tx">세 번째 치앙마이에서 한 달을 매일 세로 영상으로 기록해 ‘Day 1, Day 2…’ 릴스로 연재했습니다. 촬영부터 내레이션, 편집까지 혼자 했어요.</p>
+  <dl class="meta">
+    <div><dt>참여</dt><dd>1인 제작</dd></div>
+    <div><dt>ROLE</dt><dd>기획 · 촬영 · 내레이션 · 편집</dd></div>
+    <div><dt>CATEGORY</dt><dd>Instagram Reels<br>YouTube Shorts · TikTok</dd></div>
+    <div><dt>TOOLS</dt><dd>CapCut</dd></div>
+  </dl>
+</section>
+
+<section class="board b-cream">
+  <p class="kick">01 · 시작과 제작 방식</p>
+  <div class="cols c11" style="align-items:start">
+    <div class="stack" style="gap:14px">
+      <h3 class="t-lg">빠이에서 한 약속,<br>치앙마이에서 Day 1</h3>
+      <p class="tx">두 번째 치앙마이 때 빠이에서 한국인 친구를 사귀었고, “다음엔 치앙마이에서 한 달 같이 살자”고 약속했어요. 그리고 실제로 같이 살게 됐습니다.</p>
+      <p class="tx">치앙마이 한달살기는 이미 유튜브에 한 번 올렸던 터라, 이번에는 <span class="hl">인스타그램 릴스 방식</span>에 도전했어요. 매일을 세로 영상으로 찍어 하루 한 편씩 올리는 연재였습니다.</p>
+    </div>
+    <div class="stack" style="gap:14px">
+      <ol class="tl">
+        <li><b>촬영</b>하루 일정을 세로 영상으로</li>
+        <li><b>대본</b>찍은 일정대로 내레이션 쓰기</li>
+        <li><b>녹음</b>후녹음으로 직접 내레이션</li>
+        <li><b>편집</b>CapCut으로 짧게, 정보가 잘 보이게</li>
+        <li><b>업로드</b>Day 번호를 붙여 연재</li>
+      </ol>
+      <p class="sm">내용이나 재미가 부족한 날은 과감히 빼서, 30일을 다 채우진 않고 24편으로 묶었어요.</p>
+      <a class="btn" href="https://www.instagram.com/reel/DVa0BHEEuSi/" target="_blank" rel="noopener">첫 번째 릴스 보기 ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="board b-leaf">
+  <p class="kick">02 · 반응</p>
+  <div class="cols c4 nums-sm">
+    <div class="stack"><p class="big-n">46만+</p><p class="tx">시리즈 24편 총 조회수</p></div>
+    <div class="stack"><p class="big-n">9만</p><p class="tx">가장 많이 본 릴스 조회수</p></div>
+    <div class="stack"><p class="big-n">2,400+</p><p class="tx">한 편의 저장 수</p></div>
+    <div class="stack"><p class="big-n">900+</p><p class="tx">연재로 늘어난 팔로워</p></div>
+  </div>
+  <div class="cols c12" style="align-items:start">
+    <p class="tx">롱폼 브이로그보다 짧고 정보가 잘 보이게 담아, <span class="hl">저장과 공유</span>가 특히 많았어요. 같은 영상을 유튜브 쇼츠와 틱톡에도 올렸는데, 반응은 인스타그램 릴스에서 가장 좋았습니다.</p>
+    <div class="stack" style="gap:8px">
+      <p class="sm">가장 반응이 좋았던 릴스</p>
+      <div class="reel-cards"><a class="reel" href="https://www.instagram.com/reel/DZKAbRbxMPo/" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/UZol43Lu6Ms/oardefault.jpg" loading="lazy" alt="Day 16 · 무료 아침 요가 릴스 표지"><span>Day 16 · 무료 아침 요가<small>조회수 9만</small></span></a><a class="reel" href="https://www.instagram.com/reel/DVf0iQkksN4/" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/LbXh7NMxw6w/oardefault.jpg" loading="lazy" alt="Day 2 · 오토바이 렌트 릴스 표지"><span>Day 2 · 오토바이 렌트<small>조회수 6.4만</small></span></a><a class="reel" href="https://www.instagram.com/reel/DcibS60y6ln/" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/et6bf8eE6CY/oardefault.jpg" loading="lazy" alt="Day 25 · 아침 무삥 맛집 릴스 표지"><span>Day 25 · 아침 무삥 맛집<small>조회수 5.3만</small></span></a><a class="reel" href="https://www.instagram.com/reel/DVx5qSMkbs8/" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/x3pAA-jq6Yo/oardefault.jpg" loading="lazy" alt="Day 6 · 싼티탐 물가 릴스 표지"><span>Day 6 · 싼티탐 물가<small>조회수 4.4만</small></span></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="board b-cream">
+  <p class="kick">03 · 회고</p>
+  <div class="cols cB" style="align-items:start">
+    <div class="stack" style="gap:14px">
+      <h3 class="t-lg">“그랩 드라이버로<br>취직하다..?”</h3>
+      <p class="tx">실제로는 오토바이를 렌트한 날이었어요. 2편의 첫 문장을 이렇게 써서 궁금증을 만들어 봤고, 이 편은 <span class="hl">6.4만 회</span>로 시리즈에서 두 번째로 많이 봤습니다. 내레이션을 직접 쓰고 녹음하며 후킹과 스토리텔링을 몸으로 익혔어요.</p>
+      <div class="cols c11" style="gap:14px">
+        <div class="stack" style="gap:4px"><p class="t-md">유튜브 롱폼</p><p class="sm">하루를 길게 따라가는 브이로그. 분위기와 일상을 함께 담기 좋음.</p></div>
+        <div class="stack" style="gap:4px"><p class="t-md">인스타그램 릴스</p><p class="sm">짧게, 핵심 정보가 먼저 보이게. 저장·공유로 퍼지는 형식.</p></div>
+      </div>
+    </div>
+    <div class="retro">
+      <p class="tx"><b>잘한 점</b> 유튜버에 머물지 않고 인스타그램 여행 크리에이터로서의 길도 열었어요. 플랫폼마다 맞는 영상 형태를 직접 비교해 봤고, 대본과 내레이션을 쓰며 후킹과 스토리텔링을 경험했습니다.</p>
+      <p class="tx"><b>아쉬운 점</b> 틱톡에서는 반응이 거의 없었고, 10만 회를 넘긴 영상은 나오지 않았어요. 첫 장면에서 붙잡는 후킹 능력이 아직 부족했다고 생각합니다.</p>
+      <p class="tx"><b>다음</b> 첫 1~2초의 후킹을 더 다듬고, 플랫폼별로 형식을 맞춰 따로 만들기.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= P4 마인드밍글 ================= -->
+<section class="board b-peach" id="p4">
+  <p class="kick">Project 04</p>
+  <h2 class="t-xl">마인드밍글<br><span class="hl">MBTI 분석 채널 PD</span></h2>
+  <p class="tx">채널 시작부터 함께한 PD. MBTI 전문 자격을 가진 대표가 분석 내용을 기획하고, 저는 디자인·영상 편집을 주력으로 맡으며 용어와 세부 방향 기획을 함께 했습니다.</p>
+  <dl class="meta">
+    <div><dt>참여</dt><dd>2인 (대표 · PD)</dd></div>
+    <div><dt>ROLE</dt><dd>PD · 공동 기획 · 편집·썸네일·제목 · 캐릭터 · 해석가이드 영상 제작</dd></div>
+    <div><dt>CATEGORY</dt><dd>YouTube · Instagram<br>2023.1 ~ 2023.12</dd></div>
+    <div><dt>TOOLS</dt><dd>Premiere Pro <span class="sm">영상 편집</span><br>Photoshop <span class="sm">썸네일·이모티콘</span><br>Procreate <span class="sm">이모티콘</span></dd></div>
+  </dl>
+</section>
+
+<section class="board b-cream">
+  <p class="kick">01 · 용어 개발</p>
+  <div class="cols c12">
+    <div class="stack"><h3 class="t-lg">클리어 · 라이트 · 블러</h3>
+      <p class="tx">퍼스널컬러의 ‘브라이트·라이트·뮤트’ 개념을 MBTI에 응용해 성향의 강도를 한 단어로 말하게 만들었습니다.</p>
+      <ul class="rows terms">
+        <li><span class="no">Clear E</span><span class="ti">외향이 확실한 사람</span><span class="cat">또렷하게</span></li>
+        <li><span class="no">Light E</span><span class="ti">적당히 외향인 사람</span><span class="cat">가볍게</span></li>
+        <li><span class="no">Blur E</span><span class="ti">외향과 내향이 모호한 사람</span><span class="cat">흐릿하게</span></li>
+      </ul>
+    </div>
+    <div class="stack" style="gap:16px">
+      <figure class="cap"><img class="zoom" src="media/guide/overview.jpg" width="1400" height="786" loading="lazy" alt="해석가이드 영상 속 클리어·라이트·블러 설명 화면"><figcaption>해석가이드 영상 속 설명 화면 · 누르면 크게 보기</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="board b-mint">
+  <p class="kick">02 · Form Q 해석가이드 영상</p>
+  <div class="cols c12">
+    <div class="stack" style="gap:14px">
+      <h3 class="t-lg">판매 상품에 들어간<br>해석가이드 영상</h3>
+      <p class="tx">마인드밍글이 초기부터 판매한 상품은 MBTI Form Q 정식검사였습니다. 여기에 마인드밍글만의 패키지로 <span class="hl">Form Q 해석가이드 영상</span>을 함께 제공했고, 14분 53초 분량의 이 영상은 <span class="hl">제가 직접 편집해</span> 만들었습니다. 제가 만든 클리어·라이트·블러 용어로 검사 결과를 읽는 법을 설명합니다.</p>
+      <p class="sm">지금도 판매 중인 상품이라 영상은 공개하지 않고, 허락을 받아 일부 화면만 싣습니다.</p>
+    </div>
+    <div class="guide-grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+      <figure class="cap"><img class="zoom" src="media/guide/cover.jpg" width="1400" height="786" loading="lazy" alt="Form Q 해석 가이드 표지 화면"><figcaption>표지</figcaption></figure>
+      <figure class="cap"><img class="zoom" src="media/guide/clear.jpg" width="1400" height="786" loading="lazy" alt="클리어 I 예시 화면"><figcaption>클리어 · 뚜렷한 성향</figcaption></figure>
+      <figure class="cap"><img class="zoom" src="media/guide/light.jpg" width="1400" height="786" loading="lazy" alt="라이트 T 예시 화면"><figcaption>라이트 · 웁스(선호 외 점수)+중간범위 1~2개</figcaption></figure>
+      <figure class="cap"><img class="zoom" src="media/guide/blur.jpg" width="1400" height="786" loading="lazy" alt="블러 T 예시 화면"><figcaption>블러 · 웁스(선호 외 점수)+중간범위 3개 이상</figcaption></figure>
+      <figure class="cap"><img class="zoom" src="media/guide/istj.jpg" width="1400" height="786" loading="lazy" alt="주기능 설명 화면"><figcaption>주기능 챕터</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="board b-mint mingle-board compact">
+  <p class="kick">03 · 캐릭터</p>
+  <div class="cols c12">
+    <div class="stack" style="gap:14px">
+      <h3 class="t-lg" style="line-height:1.1">밍글<br><span class="sm" style="font-family:var(--f-serif);font-size:clamp(15px,1.5vw,19px);color:var(--ac)">Mingle · 마인드밍글 마스코트</span></h3>
+      <p class="tx">말랑한 노란 몸에 표정이 그대로 드러나는 마인드밍글의 마스코트. 캐릭터를 직접 디자인하고 상황별 이모티콘을 그려, 영상과 인스타툰, 해석가이드 영상 곳곳에 썼습니다.</p>
+      <div class="chips"><span class="chip fill">완성 이모티콘 37종</span><span class="chip">선호지표 밍글 8종</span><span class="chip">영상·인스타툰·해석가이드</span></div>
+    </div>
+    <ul class="emo-grid"><li><img src="media/mingle/hh.webp" loading="lazy" alt="웃는 밍글"></li><li><img src="media/mingle/kk.webp" loading="lazy" alt="ㅋㅋ 밍글"></li><li><img src="media/mingle/flower.webp" loading="lazy" alt="꽃 밍글"></li><li><img src="media/mingle/proud.webp" loading="lazy" alt="당당한 밍글"></li><li><img src="media/mingle/macbook.webp" loading="lazy" alt="맥북 하는 밍글"></li><li><img src="media/mingle/sparkle.webp" loading="lazy" alt="반짝이는 밍글"></li><li><img src="media/mingle/gift.webp" loading="lazy" alt="선물 든 밍글"></li><li><img src="media/mingle/workout.webp" loading="lazy" alt="운동하는 밍글"></li><li><img src="media/mingle/balloon.webp" loading="lazy" alt="하트 풍선 밍글"></li><li><img src="media/mingle/hammock.webp" loading="lazy" alt="해먹 위 밍글"></li><li><img src="media/mingle/happy.webp" loading="lazy" alt="해피 밍글"></li><li><img src="media/mingle/wow.webp" loading="lazy" alt="감탄하는 밍글"></li></ul>
+  </div>
+  <div class="pref">
+    <p class="sm">선호지표별 밍글 · MBTI의 여덟 가지 선호를 하나씩 캐릭터로</p>
+    <ul><li><img src="media/mingle/pref-E.webp" loading="lazy" alt="외향 E 밍글"><b>E</b><span>외향 · 파티 모자</span></li><li><img src="media/mingle/pref-I.webp" loading="lazy" alt="내향 I 밍글"><b>I</b><span>내향 · 책 읽기</span></li><li><img src="media/mingle/pref-S.webp" loading="lazy" alt="감각 S 밍글"><b>S</b><span>감각 · 자료 분석</span></li><li><img src="media/mingle/pref-N.webp" loading="lazy" alt="직관 N 밍글"><b>N</b><span>직관 · 아이디어</span></li><li><img src="media/mingle/pref-T.webp" loading="lazy" alt="사고 T 밍글"><b>T</b><span>사고 · 체크!</span></li><li><img src="media/mingle/pref-F.webp" loading="lazy" alt="감정 F 밍글"><b>F</b><span>감정 · 하트</span></li><li><img src="media/mingle/pref-J.webp" loading="lazy" alt="판단 J 밍글"><b>J</b><span>판단 · 계획표</span></li><li><img src="media/mingle/pref-P.webp" loading="lazy" alt="인식 P 밍글"><b>P</b><span>인식 · 둥실둥실</span></li></ul>
+  </div>
+</section>
+
+<section class="board b-cream">
+  <p class="kick">04 · 캐릭터 제작 과정</p>
+  <div class="cols c12" style="align-items:center">
+    <div class="stack" style="gap:14px">
+      <h3 class="t-lg">스케치에서<br>이모티콘까지</h3>
+      <p class="tx">펜 스케치로 표정과 동작을 먼저 잡고, 선을 다듬고 색을 입혀 이모티콘으로 완성했습니다.</p>
+      <figure class="cap"><img class="zoom" src="media/mascot.jpg" width="1400" height="978" loading="lazy" alt="색칠 전 밍글 표정 스케치"><figcaption>① 색칠 전 표정 스케치 · 누르면 크게 보기</figcaption></figure>
+    </div>
+    <div class="stack" style="gap:8px">
+      <p class="sm">② 같은 표정을 완성한 이모티콘</p>
+      <ul class="emo-grid proc"><li><img src="media/mingle/hi.webp" loading="lazy" alt="ㅎㅇ~ 밍글 완성본"><span>ㅎㅇ~</span></li><li><img src="media/mingle/kyaak.webp" loading="lazy" alt="꺄악 밍글 완성본"><span>꺄악</span></li><li><img src="media/mingle/bliss.webp" loading="lazy" alt="행복... 밍글 완성본"><span>행복...</span></li><li><img src="media/mingle/tired.webp" loading="lazy" alt="지쳤어 밍글 완성본"><span>지쳤어</span></li><li><img src="media/mingle/tower.webp" loading="lazy" alt="밍글탑 밍글 완성본"><span>밍글탑</span></li><li><img src="media/mingle/serious.webp" loading="lazy" alt="심각 밍글 완성본"><span>심각</span></li><li><img src="media/mingle/plant.webp" loading="lazy" alt="식물 밍글 완성본"><span>식물</span></li><li><img src="media/mingle/heartdraw.webp" loading="lazy" alt="하트 밍글 완성본"><span>하트</span></li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="board b-leaf compact">
+  <p class="kick">05 · 인스타툰</p>
+  <div class="cols c11" style="align-items:end">
+    <h3 class="t-lg">직접 그리고 연재한<br>MBTI 인스타툰 7편</h3>
+    <p class="tx">MBTI 성향이 다른 사람들의 일상을 짧은 만화로 풀었습니다. 에피소드 내용은 대표님께 받고, <span class="hl">그림과 글, 업로드는 전부</span> 직접 했습니다. 표지를 누르면 한 편 전체를 볼 수 있어요.</p>
+  </div>
+  <div class="toons"><button type="button" class="toon-ep" data-ep="1" data-n="7" data-title="너무 귀여운 ENFP 아내 (1)"><img src="media/toon/ep1-1.jpg" loading="lazy" alt="너무 귀여운 ENFP 아내 (1) 표지"><span>너무 귀여운 ENFP 아내 (1)</span></button><button type="button" class="toon-ep" data-ep="2" data-n="7" data-title="너무 귀여운 ENFP 아내 (2)"><img src="media/toon/ep2-1.jpg" loading="lazy" alt="너무 귀여운 ENFP 아내 (2) 표지"><span>너무 귀여운 ENFP 아내 (2)</span></button><button type="button" class="toon-ep" data-ep="3" data-n="6" data-title="엥뿌삐가 보는 ISFJ 친구들 특징"><img src="media/toon/ep3-1.jpg" loading="lazy" alt="엥뿌삐가 보는 ISFJ 친구들 특징 표지"><span>엥뿌삐가 보는 ISFJ 친구들 특징</span></button><button type="button" class="toon-ep" data-ep="4" data-n="7" data-title="P 부부의 여행, 출발부터 아찔했던 썰"><img src="media/toon/ep4-1.jpg" loading="lazy" alt="P 부부의 여행, 출발부터 아찔했던 썰 표지"><span>P 부부의 여행, 출발부터 아찔했던 썰</span></button><button type="button" class="toon-ep" data-ep="5" data-n="7" data-title="외향 vs 내향, 호캉스를 보내는 방법의 차이"><img src="media/toon/ep5-1.jpg" loading="lazy" alt="외향 vs 내향, 호캉스를 보내는 방법의 차이 표지"><span>외향 vs 내향, 호캉스를 보내는 방법의 차이</span></button><button type="button" class="toon-ep" data-ep="6" data-n="6" data-title="ISTP의 허당끼, 나트랑 여행 중 허당 모먼트"><img src="media/toon/ep6-1.jpg" loading="lazy" alt="ISTP의 허당끼, 나트랑 여행 중 허당 모먼트 표지"><span>ISTP의 허당끼, 나트랑 여행 중 허당 모먼트</span></button><button type="button" class="toon-ep" data-ep="7" data-n="6" data-title="엥뿌삐가 보는 INFP 친구들 특징"><img src="media/toon/ep7-1.jpg" loading="lazy" alt="엥뿌삐가 보는 INFP 친구들 특징 표지"><span>엥뿌삐가 보는 INFP 친구들 특징</span></button></div>
+  <div class="stack" style="gap:8px"><p class="sm">1편 ‘너무 귀여운 ENFP 아내 (1)’ 본문</p><div class="toon-strip"><img src="media/toon/ep1-2.jpg" loading="lazy" alt="너무 귀여운 ENFP 아내 (1) 2컷"><img src="media/toon/ep1-3.jpg" loading="lazy" alt="너무 귀여운 ENFP 아내 (1) 3컷"><img src="media/toon/ep1-4.jpg" loading="lazy" alt="너무 귀여운 ENFP 아내 (1) 4컷"><img src="media/toon/ep1-5.jpg" loading="lazy" alt="너무 귀여운 ENFP 아내 (1) 5컷"><img src="media/toon/ep1-6.jpg" loading="lazy" alt="너무 귀여운 ENFP 아내 (1) 6컷"><img src="media/toon/ep1-7.jpg" loading="lazy" alt="너무 귀여운 ENFP 아내 (1) 7컷"></div></div>
+</section>
+
+<section class="board b-cream">
+  <p class="kick">06 · 기획과 편집</p>
+  <div class="cols c12">
+    <div class="stack"><p class="big-n">27편</p>
+      <h3 class="t-lg">함께 기획하고,<br>편집·썸네일·제목은<br>전부 맡은 영상</h3>
+      <p class="tx">MBTI 분석 내용은 전문 자격을 가진 대표가 잡고, 저는 구성과 방향을 함께 다듬으며 편집·썸네일·제목을 모두 맡았습니다. 채널 초기에는 드라마·예능 속 인물의 MBTI를 분석하는 영상으로 시작했습니다.</p></div>
+    <div class="stack"><p class="sm">드라마·예능 MBTI 분석</p><div class="ytg" style="--n:3"><a class="yt" href="https://youtu.be/KwDktIQMlx0" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/KwDktIQMlx0/mqdefault.jpg" loading="lazy" alt=""><span>더 글로리 인물별 MBTI</span></a><a class="yt" href="https://youtu.be/uAMMbS93vEI" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/uAMMbS93vEI/mqdefault.jpg" loading="lazy" alt=""><span>서진이네 MBTI ① 정유미·이서진</span></a><a class="yt" href="https://youtu.be/8ytFlsS1D24" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/8ytFlsS1D24/mqdefault.jpg" loading="lazy" alt=""><span>서진이네 MBTI ② FP 남자들</span></a><a class="yt" href="https://youtu.be/xa7lqnv9CAY" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/xa7lqnv9CAY/mqdefault.jpg" loading="lazy" alt=""><span>지락실·서진이네·나혼산 ExxP</span></a><a class="yt" href="https://youtu.be/m3nkleeHbIA" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/m3nkleeHbIA/mqdefault.jpg" loading="lazy" alt=""><span>하트시그널 속 INFP 남자</span></a><a class="yt" href="https://youtu.be/cXWWPVQhGxk" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/cXWWPVQhGxk/mqdefault.jpg" loading="lazy" alt=""><span>환승연애2 커플 MBTI 궁합</span></a></div></div>
+  </div>
+</section>
+
+<section class="board b-leaf">
+  <p class="kick">07 · 시리즈</p>
+  <div class="cols c21" style="align-items:end">
+    <h3 class="t-lg">16가지 유형<br>연애 분석 시리즈</h3>
+    <div class="stack" style="gap:4px"><p class="big-n">168만+</p><p class="tx">16편 누적 조회수 <span class="sm">(2026.11 기준)</span></p></div>
+  </div>
+  <p class="tx">16개 유형을 하나씩, 같은 형식으로 끝까지 완주한 시리즈로 채널에서 반응이 가장 컸습니다. 대표 영상인 ISTP 편과 INTP 편은 각각 <span class="hl">31만, 29만 회</span>를 넘었습니다.</p>
+  <div class="ytg ytg16" style="--n:8"><a class="yt top" href="https://youtu.be/7mxWz-o52DI" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/7mxWz-o52DI/mqdefault.jpg" loading="lazy" alt=""><span>ISTP <small>31.6만</small></span></a><a class="yt" href="https://youtu.be/lZ-dGdRnjUo" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/lZ-dGdRnjUo/mqdefault.jpg" loading="lazy" alt=""><span>INFJ <small>22.6만</small></span></a><a class="yt" href="https://youtu.be/MKvi_YCIyKU" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/MKvi_YCIyKU/mqdefault.jpg" loading="lazy" alt=""><span>INFP <small>9.8만</small></span></a><a class="yt" href="https://youtu.be/-3s5HU07dxo" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/-3s5HU07dxo/mqdefault.jpg" loading="lazy" alt=""><span>ESFJ <small>6.5만</small></span></a><a class="yt" href="https://youtu.be/EW93Wo1ZuBc" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/EW93Wo1ZuBc/mqdefault.jpg" loading="lazy" alt=""><span>ESTP <small>7.8만</small></span></a><a class="yt" href="https://youtu.be/tpIdLxe1wUA" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/tpIdLxe1wUA/mqdefault.jpg" loading="lazy" alt=""><span>ENTJ <small>4.9만</small></span></a><a class="yt top" href="https://youtu.be/ZrjZGwAHU5w" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/ZrjZGwAHU5w/mqdefault.jpg" loading="lazy" alt=""><span>INTP <small>29.9만</small></span></a><a class="yt" href="https://youtu.be/EG3CWiqnY1Y" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/EG3CWiqnY1Y/mqdefault.jpg" loading="lazy" alt=""><span>ENFJ <small>1.9만</small></span></a><a class="yt" href="https://youtu.be/I8nk01xR6eI" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/I8nk01xR6eI/mqdefault.jpg" loading="lazy" alt=""><span>ISFJ <small>3.8만</small></span></a><a class="yt" href="https://youtu.be/7XIj591vOpU" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/7XIj591vOpU/mqdefault.jpg" loading="lazy" alt=""><span>ENTP <small>2.9만</small></span></a><a class="yt" href="https://youtu.be/4jYSXDePCpg" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/4jYSXDePCpg/mqdefault.jpg" loading="lazy" alt=""><span>ISTJ <small>17.7만</small></span></a><a class="yt" href="https://youtu.be/fhDEW5mIf9A" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/fhDEW5mIf9A/mqdefault.jpg" loading="lazy" alt=""><span>ESFP <small>5만</small></span></a><a class="yt" href="https://youtu.be/951rM51dJEM" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/951rM51dJEM/mqdefault.jpg" loading="lazy" alt=""><span>ISFP <small>14.5만</small></span></a><a class="yt" href="https://youtu.be/RdKtQSBNOw0" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/RdKtQSBNOw0/mqdefault.jpg" loading="lazy" alt=""><span>ENFP <small>2.2만</small></span></a><a class="yt" href="https://youtu.be/wiGT-qbRFZk" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/wiGT-qbRFZk/mqdefault.jpg" loading="lazy" alt=""><span>ESTJ <small>5.1만</small></span></a><a class="yt" href="https://youtu.be/4mljtPYflF0" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/4mljtPYflF0/mqdefault.jpg" loading="lazy" alt=""><span>INTJ <small>2.6만</small></span></a></div>
+</section>
+
+<section class="board b-cream">
+  <p class="kick">08 · 분석과 상담</p>
+  <div class="cols c12">
+    <div class="stack">
+      <h3 class="t-lg">주제 분석 영상과<br>실제 상담 영상</h3>
+      <p class="tx">연애·검사 결과 해석 같은 주제 영상과 함께, 실제 고객의 MBTI 정식검사 상담 영상은 <span class="hl">촬영부터 편집까지 전부</span> 맡았습니다.</p>
+    </div>
+    <div class="stack" style="gap:18px">
+      <div class="stack"><p class="sm">MBTI 주제 분석</p><div class="ytg" style="--n:3"><a class="yt" href="https://youtu.be/ei2s09gkr5g" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/ei2s09gkr5g/mqdefault.jpg" loading="lazy" alt=""><span>T와 연애할 때 알아둘 것</span></a><a class="yt" href="https://youtu.be/uuyYiiIAxHs" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/uuyYiiIAxHs/mqdefault.jpg" loading="lazy" alt=""><span>MBTI가 자주 바뀌는 이유</span></a><a class="yt" href="https://youtu.be/RJQU-leTs6A" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/RJQU-leTs6A/mqdefault.jpg" loading="lazy" alt=""><span>덱스가 ISTP인데 인싸인 이유 (블러 유형)</span></a></div></div>
+      <div class="stack"><p class="sm">고객 상담 · 촬영과 편집 전부</p><div class="ytg" style="--n:3"><a class="yt" href="https://youtu.be/wmvM1UZ5Uu8" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/wmvM1UZ5Uu8/mqdefault.jpg" loading="lazy" alt=""><span>ISFP × INFP 커플 상담</span></a><a class="yt" href="https://youtu.be/jkFIn9vZl4I" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/jkFIn9vZl4I/mqdefault.jpg" loading="lazy" alt=""><span>INFJ 정식검사 해석 상담</span></a></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="board b-cream">
+  <p class="kick">09 · 회고</p>
+  <div class="cols c11" style="align-items:start">
+    <div class="stack" style="gap:12px">
+      <h3 class="t-lg">콘텐츠에서<br>상품으로</h3>
+      <p class="tx">영상으로 끝나지 않고 수익으로 이어지는 흐름을 제안했습니다.</p>
+      <ul class="rows">
+        <li><span class="no">1</span><span class="ti">MBTI 분석 영상</span><span class="cat">유입</span></li>
+        <li><span class="no">2</span><span class="ti">MBTI 개인 상담</span><span class="cat">관계 형성</span></li>
+        <li><span class="no">3</span><span class="ti">MBTI 전자책 판매</span><span class="cat">상품화</span></li>
+      </ul>
+    </div>
+    <div class="retro">
+      <p class="tx"><b>잘한 점</b> 없던 용어(클리어·라이트·블러)를 만들어 채널의 언어로 정착시켰고, 그 용어가 판매 상품의 해석가이드 영상까지 이어졌어요. 16유형 연애 시리즈는 끝까지 완주해 누적 168만 회를 만들었고, 영상 밖의 방향(상담, 전자책)도 제안했습니다.</p>
+      <p class="tx"><b>함께 일한 방식</b> MBTI 전문 자격을 가진 대표는 분석 내용을, 저는 디자인·편집과 용어·세부 방향 기획을 맡아 각자 잘하는 영역으로 역할을 나눴어요. 전문가의 내용을 보는 사람이 이해하기 쉬운 말과 그림으로 바꾸는 일이 제 몫이었습니다.</p>
+      <p class="tx"><b>배운 점</b> 채널이 앞으로 갈 방향과 제가 하고 싶은 방향이 달라졌을 때, 이를 정리해 팀을 떠나는 선택을 했습니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Next -->
+<section class="board b-sun" id="next">
+  <p class="kick">Next · 다음에 풀고 싶은 문제</p>
+  <div class="cols c11" style="align-items:start">
+    <div class="stack" style="gap:14px">
+      <h2 class="t-xl">여행이 아니라,<br><span class="hl">살아 보는 정보</span></h2>
+      <p class="tx">AI 비서는 비행기 표와 숙소는 예약해 주지만, “이 동네에서 한 달 살면 실제로 어떤지”는 알려 주지 못해요. 병원과 약, 세탁, 장보기, 밤의 치안, 실제 생활비처럼 처음 떠나는 사람이 가장 불안해하는 정보는 여전히 흩어져 있습니다.</p>
+      <p class="q">실제로 살아 본 사람들의 기록을 모아, 처음 떠나는 사람의 질문에 답해 주는 AI 생활 가이드를 만들고 싶어요.</p>
+    </div>
+    <div class="stack" style="gap:14px">
+      <p class="sm">이 문제를 고른 이유 · 직접 겪고 들은 것</p>
+      <ul class="rows two">
+        <li><span class="ti">5개국 9개 도시에서 직접 살아 봄</span><span class="cat">1년 8개월</span></li>
+        <li><span class="ti">시청자가 가장 많이 물은 건 경비·숙소·치안</span><span class="cat">댓글 질문</span></li>
+        <li><span class="ti">총정리 영상 조회수의 39%가 검색 유입</span><span class="cat">사람들이 찾는 정보</span></li>
+        <li><span class="ti">흩어진 기록을 모아 다시 꺼내 보게 만든 경험</span><span class="cat">인용함</span></li>
+      </ul>
+      <div class="next-more">
+        <p class="t-md">더 나아가, 정보에서 소외된 여행자</p>
+        <p class="tx">고령층, 휠체어 사용자, 처음 해외에 나가는 사람처럼 필요한 정보가 더 부족한 이들도 있어요. 계단·엘리베이터·화장실처럼 현지에서 직접 확인한 접근성 정보를 쉽게 묻고 답할 수 있게 하고 싶습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Thank you -->
+<section class="board b-green b-center" id="thanks">
+  <p class="kick">Thank you</p>
+  <h2 class="t-hero" style="font-size:clamp(52px,13vw,160px)">Thank you</h2>
+  <p class="tx">끝까지 봐 주셔서 감사합니다. 앞으로도 불편을 발견하면, 일단 만들어 보겠습니다.<br><span class="sm">이 포트폴리오 사이트도 AI(Claude)와 대화하며 직접 만들었어요.</span></p>
+  <dl class="kv" style="max-width:420px">
+    <dt>Email</dt><dd><a href="mailto:yejee3514@gmail.com">yejee3514@gmail.com</a></dd>
+    <dt>YouTube</dt><dd><a href="https://www.youtube.com/@onemonthnanna" target="_blank" rel="noopener">난나의 한달일기 (@onemonthnanna) ↗</a></dd>
+    <dt>Instagram</dt><dd><a href="https://www.instagram.com/nanna1month/" target="_blank" rel="noopener">@nanna1month ↗</a></dd>
+  </dl>
+</section>
+
+</main>
+<script type="application/json" id="tagImgData">[{"n": "여행", "kw": ["여행", "관광", "투어", "숙소", "호텔"], "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23BFE3FF%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23D9F4E6%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22150%22%20r%3D%2282%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.5%22/%3E%3Cg%20transform%3D%22translate%28140%2090%29%20scale%285%29%22%20fill%3D%22none%22%20stroke%3D%22%234C8DBF%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M20%2010c0%206-8%2012-8%2012s-8-6-8-12a8%208%200%200%201%2016%200Z%22/%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2210%22%20r%3D%223%22/%3E%3C/g%3E%3C/svg%3E"}, {"n": "음식·맛집", "kw": ["음식", "맛집", "먹방", "먹거리", "레시피"], "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23FFD9C2%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFEFD2%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22150%22%20r%3D%2282%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.5%22/%3E%3Cg%20transform%3D%22translate%28140%2090%29%20scale%285%29%22%20fill%3D%22none%22%20stroke%3D%22%23D9794F%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%202v7c0%201.1.9%202%202%202h4a2%202%200%200%200%202-2V2%22/%3E%3Cpath%20d%3D%22M7%202v20%22/%3E%3Cpath%20d%3D%22M21%2015V2a5%205%200%200%200-5%205v6c0%201.1.9%202%202%202h3Zm0%200v7%22/%3E%3C/g%3E%3C/svg%3E"}, {"n": "카페", "kw": ["카페", "커피", "디저트", "베이커리", "브런치"], "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23EBD8C3%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23F8EEE2%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22150%22%20r%3D%2282%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.5%22/%3E%3Cg%20transform%3D%22translate%28140%2090%29%20scale%285%29%22%20fill%3D%22none%22%20stroke%3D%22%238D6C50%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M10%202v2%22/%3E%3Cpath%20d%3D%22M14%202v2%22/%3E%3Cpath%20d%3D%22M16%208a1%201%200%200%201%201%201v8a4%204%200%200%201-4%204H7a4%204%200%200%201-4-4V9a1%201%200%200%201%201-1h14a4%204%200%201%201%200%208h-1%22/%3E%3Cpath%20d%3D%22M6%202v2%22/%3E%3C/g%3E%3C/svg%3E"}, {"n": "뷰티", "kw": ["뷰티", "화장", "메이크업", "스킨케어", "립스틱"], "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23FFD3E0%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23E9D8F5%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22150%22%20r%3D%2282%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.5%22/%3E%3Cg%20transform%3D%22translate%28140%2090%29%20scale%285%29%22%20fill%3D%22none%22%20stroke%3D%22%23D0668C%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%228%22%20y%3D%2214%22%20width%3D%228%22%20height%3D%228%22%20rx%3D%221.5%22/%3E%3Crect%20x%3D%229%22%20y%3D%2210.5%22%20width%3D%226%22%20height%3D%223.5%22/%3E%3Cpath%20d%3D%22M9.5%2010.5V6.5L14.5%203.5v7%22/%3E%3Cpath%20d%3D%22M19.5%204v3.5%22/%3E%3Cpath%20d%3D%22M17.75%205.75h3.5%22/%3E%3C/g%3E%3C/svg%3E"}, {"n": "게임", "kw": ["게임", "게이밍", "스팀", "닌텐도", "플스"], "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23CFCBFF%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23DDEBFF%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22150%22%20r%3D%2282%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.5%22/%3E%3Cg%20transform%3D%22translate%28140%2090%29%20scale%285%29%22%20fill%3D%22none%22%20stroke%3D%22%237770D6%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M6%2011h4%22/%3E%3Cpath%20d%3D%22M8%209v4%22/%3E%3Cpath%20d%3D%22M15%2012h.01%22/%3E%3Cpath%20d%3D%22M18%2010h.01%22/%3E%3Cpath%20d%3D%22M17.32%205H6.68a4%204%200%200%200-3.978%203.59c-.006.052-.01.101-.017.152C2.604%209.416%202%2014.456%202%2016a3%203%200%200%200%203%203c1%200%201.5-.5%202-1l1.414-1.414A2%202%200%200%201%209.828%2016h4.344a2%202%200%200%201%201.414.586L17%2018c.5.5%201%201%202%201a3%203%200%200%200%203-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4%204%200%200%200%2017.32%205z%22/%3E%3C/g%3E%3C/svg%3E"}, {"n": "운동", "kw": ["운동", "헬스", "요가", "필라테스", "러닝"], "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23C4EDD3%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23E5F6C9%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22150%22%20r%3D%2282%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.5%22/%3E%3Cg%20transform%3D%22translate%28140%2090%29%20scale%285%29%22%20fill%3D%22none%22%20stroke%3D%22%234BA277%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M6.5%2012h11%22/%3E%3Crect%20x%3D%223.5%22%20y%3D%227%22%20width%3D%223%22%20height%3D%2210%22%20rx%3D%221%22/%3E%3Crect%20x%3D%2217.5%22%20y%3D%227%22%20width%3D%223%22%20height%3D%2210%22%20rx%3D%221%22/%3E%3Cpath%20d%3D%22M1.5%2010v4%22/%3E%3Cpath%20d%3D%22M22.5%2010v4%22/%3E%3C/g%3E%3C/svg%3E"}, {"n": "AI", "kw": ["AI", "인공지능", "ChatGPT", "클로드", "프롬프트"], "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23C9D3FF%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23BDE8FA%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22150%22%20r%3D%2282%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.5%22/%3E%3Cg%20transform%3D%22translate%28140%2090%29%20scale%285%29%22%20fill%3D%22none%22%20stroke%3D%22%235877D6%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M9.937%2015.5A2%202%200%200%200%208.5%2014.063l-6.135-1.582a.5.5%200%200%201%200-.962L8.5%209.936A2%202%200%200%200%209.937%208.5l1.582-6.135a.5.5%200%200%201%20.963%200L14.063%208.5A2%202%200%200%200%2015.5%209.937l6.135%201.581a.5.5%200%200%201%200%20.964L15.5%2014.063a2%202%200%200%200-1.437%201.437l-1.582%206.135a.5.5%200%200%201-.963%200z%22/%3E%3Cpath%20d%3D%22M20%203v4%22/%3E%3Cpath%20d%3D%22M22%205h-4%22/%3E%3Cpath%20d%3D%22M4%2017v2%22/%3E%3Cpath%20d%3D%22M5%2018H3%22/%3E%3C/g%3E%3C/svg%3E"}, {"n": "음악·공연", "kw": ["음악", "노래", "콘서트", "공연", "플레이리스트"], "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23F2D0F2%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23DCD6FB%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22150%22%20r%3D%2282%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.5%22/%3E%3Cg%20transform%3D%22translate%28140%2090%29%20scale%285%29%22%20fill%3D%22none%22%20stroke%3D%22%23A456C7%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M9%2018V5l12-2v13%22/%3E%3Ccircle%20cx%3D%226%22%20cy%3D%2218%22%20r%3D%223%22/%3E%3Ccircle%20cx%3D%2218%22%20cy%3D%2216%22%20r%3D%223%22/%3E%3C/g%3E%3C/svg%3E"}, {"n": "영화·드라마", "kw": ["영화", "드라마", "예능", "애니", "넷플릭스"], "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23C9D0EA%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23DDD6EE%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22150%22%20r%3D%2282%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.5%22/%3E%3Cg%20transform%3D%22translate%28140%2090%29%20scale%285%29%22%20fill%3D%22none%22%20stroke%3D%22%234E5A9C%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%222%22%20y%3D%227%22%20width%3D%2220%22%20height%3D%2215%22%20rx%3D%222%22/%3E%3Cpath%20d%3D%22m17%202-5%205-5-5%22/%3E%3Cpath%20d%3D%22M10.5%2011.5v6l5-3Z%22/%3E%3C/g%3E%3C/svg%3E"}, {"n": "패션", "kw": ["패션", "코디", "옷", "룩북", "스타일링"], "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23C5EBEA%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23DDF4EC%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22150%22%20r%3D%2282%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.5%22/%3E%3Cg%20transform%3D%22translate%28140%2090%29%20scale%285%29%22%20fill%3D%22none%22%20stroke%3D%22%233E9A9B%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M20.38%203.46%2016%202a4%204%200%200%201-8%200L3.62%203.46a2%202%200%200%200-1.34%202.23l.58%203.47a1%201%200%200%200%20.99.84H6v10c0%201.1.9%202%202%202h8a2%202%200%200%200%202-2V10h2.15a1%201%200%200%200%20.99-.84l.58-3.47a2%202%200%200%200-1.34-2.23z%22/%3E%3C/g%3E%3C/svg%3E"}, {"n": "반려동물", "kw": ["반려동물", "반려견", "반려묘", "강아지", "고양이"], "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23FFE2B8%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFF0D8%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22150%22%20r%3D%2282%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.5%22/%3E%3Cg%20transform%3D%22translate%28140%2090%29%20scale%285%29%22%20fill%3D%22none%22%20stroke%3D%22%23C98A3F%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%225.5%22%20cy%3D%2211%22%20r%3D%221.7%22/%3E%3Ccircle%20cx%3D%229%22%20cy%3D%226.5%22%20r%3D%221.8%22/%3E%3Ccircle%20cx%3D%2215%22%20cy%3D%226.5%22%20r%3D%221.8%22/%3E%3Ccircle%20cx%3D%2218.5%22%20cy%3D%2211%22%20r%3D%221.7%22/%3E%3Cpath%20d%3D%22M12%2012.5c-3%200-5.5%202.7-5.5%205%200%201.8%201.5%202.5%203%202.5%201%200%201.6-.4%202.5-.4s1.5.4%202.5.4c1.5%200%203-.7%203-2.5%200-2.3-2.5-5-5.5-5Z%22/%3E%3C/g%3E%3C/svg%3E"}, {"n": "공부·독서", "kw": ["공부", "독서", "책", "책추천", "책리뷰"], "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23EAF0B8%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23F6F8DA%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22150%22%20r%3D%2282%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.5%22/%3E%3Cg%20transform%3D%22translate%28140%2090%29%20scale%285%29%22%20fill%3D%22none%22%20stroke%3D%22%238A9A2B%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M2%203h6a4%204%200%200%201%204%204v14a3%203%200%200%200-3-3H2z%22/%3E%3Cpath%20d%3D%22M22%203h-6a4%204%200%200%200-4%204v14a3%203%200%200%201%203-3h7z%22/%3E%3C/g%3E%3C/svg%3E"}, {"n": "개발·코딩", "kw": ["개발", "코딩", "프로그래밍", "프로그래머", "깃허브"], "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23D3DAE6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23E5E9F1%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22150%22%20r%3D%2282%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.5%22/%3E%3Cg%20transform%3D%22translate%28140%2090%29%20scale%285%29%22%20fill%3D%22none%22%20stroke%3D%22%234C5B78%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m16%2018%206-6-6-6%22/%3E%3Cpath%20d%3D%22m8%206-6%206%206%206%22/%3E%3Cpath%20d%3D%22m14%204-4%2016%22/%3E%3C/g%3E%3C/svg%3E"}, {"n": "자연·캠핑", "kw": ["캠핑", "등산", "자연", "하이킹", "바다"], "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23C3E2BD%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23F3EBC9%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22150%22%20r%3D%2282%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.5%22/%3E%3Cg%20transform%3D%22translate%28140%2090%29%20scale%285%29%22%20fill%3D%22none%22%20stroke%3D%22%235C8F52%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3.5%2021%2014%203%22/%3E%3Cpath%20d%3D%22M20.5%2021%2010%203%22/%3E%3Cpath%20d%3D%22M15.5%2021%2012%2015l-3.5%206%22/%3E%3Cpath%20d%3D%22M2%2021h20%22/%3E%3C/g%3E%3C/svg%3E"}, {"n": "인테리어·DIY", "kw": ["인테리어", "집꾸미기", "집들이", "홈스타일링", "살림"], "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23F2D5CF%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23F8E9E1%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22150%22%20r%3D%2282%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.5%22/%3E%3Cg%20transform%3D%22translate%28140%2090%29%20scale%285%29%22%20fill%3D%22none%22%20stroke%3D%22%23B8705E%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m3%209%209-7%209%207v11a2%202%200%200%201-2%202H5a2%202%200%200%201-2-2z%22/%3E%3Cpath%20d%3D%22M9%2022V12h6v10%22/%3E%3C/g%3E%3C/svg%3E"}, {"n": "재테크", "kw": ["재테크", "주식", "투자", "경제", "부동산"], "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23FFE8A3%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFF4CE%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22150%22%20r%3D%2282%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.5%22/%3E%3Cg%20transform%3D%22translate%28140%2090%29%20scale%285%29%22%20fill%3D%22none%22%20stroke%3D%22%23BE8A0E%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m22%207-8.5%208.5-5-5L2%2017%22/%3E%3Cpath%20d%3D%22M16%207h6v6%22/%3E%3C/g%3E%3C/svg%3E"}, {"n": "일상·브이로그", "kw": ["일상", "브이로그", "위시리스트", "루틴", "데일리"], "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23FFCBCB%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFE2D8%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23g%29%22/%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22150%22%20r%3D%2282%22%20fill%3D%22%23fff%22%20fill-opacity%3D%22.5%22/%3E%3Cg%20transform%3D%22translate%28140%2090%29%20scale%285%29%22%20fill%3D%22none%22%20stroke%3D%22%23DE5F59%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m16%2013%205.223%203.482a.5.5%200%200%200%20.777-.416V7.87a.5.5%200%200%200-.752-.432L16%2010.5%22/%3E%3Crect%20x%3D%222%22%20y%3D%226%22%20width%3D%2214%22%20height%3D%2212%22%20rx%3D%222%22/%3E%3C/g%3E%3C/svg%3E"}, {"n": "하늘", "kw": [], "src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22s%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%238FC3FF%22/%3E%3Cstop%20offset%3D%22.55%22%20stop-color%3D%22%23D4E6FF%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FFE3EA%22/%3E%3C/linearGradient%3E%3CradialGradient%20id%3D%22glow%22%20cx%3D%22.5%22%20cy%3D%22.5%22%20r%3D%22.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%22.9%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fff%22%20stop-opacity%3D%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23s%29%22/%3E%3Ccircle%20cx%3D%22300%22%20cy%3D%22215%22%20r%3D%2295%22%20fill%3D%22url%28%23glow%29%22/%3E%3Cg%20fill%3D%22%23fff%22%20fill-opacity%3D%22.95%22%3E%3Cellipse%20cx%3D%22120%22%20cy%3D%22172%22%20rx%3D%2272%22%20ry%3D%2222%22/%3E%3Ccircle%20cx%3D%2292%22%20cy%3D%22156%22%20r%3D%2226%22/%3E%3Ccircle%20cx%3D%22136%22%20cy%3D%22148%22%20r%3D%2232%22/%3E%3C/g%3E%3Cg%20fill%3D%22%23fff%22%20fill-opacity%3D%22.8%22%3E%3Cellipse%20cx%3D%22292%22%20cy%3D%22104%22%20rx%3D%2248%22%20ry%3D%2215%22/%3E%3Ccircle%20cx%3D%22276%22%20cy%3D%2292%22%20r%3D%2218%22/%3E%3Ccircle%20cx%3D%22305%22%20cy%3D%2288%22%20r%3D%2222%22/%3E%3C/g%3E%3Cg%20fill%3D%22%23fff%22%20fill-opacity%3D%22.6%22%3E%3Cellipse%20cx%3D%22228%22%20cy%3D%22240%22%20rx%3D%2260%22%20ry%3D%2217%22/%3E%3Ccircle%20cx%3D%22208%22%20cy%3D%22228%22%20r%3D%2220%22/%3E%3Ccircle%20cx%3D%22244%22%20cy%3D%22224%22%20r%3D%2224%22/%3E%3C/g%3E%3C/svg%3E"}]</script>
+
+<dialog class="toon-view" id="toonView" aria-label="인스타툰 보기">
+  <header><span id="toonTitle"></span><button type="button" id="toonClose">닫기</button></header>
+  <div class="pages" id="toonPages"></div>
+</dialog>
+
+<script>
+/* 태그 기반 기본 이미지: 화면에 보이는 동안 태그를 하나씩 자동으로 눌러, 앱이 실제로 쓰는 SVG를 차례로 보여 줌(반복) */
+(function(){
+  var box=document.querySelector(".tag-pick"),fig=document.querySelector(".tag-preview"),raw=document.getElementById("tagImgData");
+  if(!box||!fig||!raw)return;
+  var data=JSON.parse(raw.textContent),img=fig.querySelector("img"),name=fig.querySelector("b"),kw=fig.querySelector("span"),chips=box.children,cur=0,timer=null;
+  var still=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  data.forEach(function(d){var p=new Image();p.src=d.src});
+  function show(i){
+    cur=i;var d=data[i];
+    [].forEach.call(chips,function(c,k){c.classList.toggle("on",k===i)});
+    function put(){img.src=d.src;img.alt=d.n+" 분류 기본 이미지";name.textContent=d.n;kw.textContent=d.kw.length?"#"+d.kw.join(" #"):"어느 분류에도 맞지 않을 때";fig.classList.remove("swap")}
+    if(still){put();return}
+    fig.classList.add("swap");setTimeout(put,220);
+  }
+  function start(){if(!timer)timer=setInterval(function(){show((cur+1)%data.length)},1600)}
+  function stop(){clearInterval(timer);timer=null}
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?start():stop()})},{threshold:.3}).observe(fig);
+  }else start();
+})();
+
+/* 표지 타이핑: 빈 화면에 커서만 깜빡이다가 Portfolio가 한 글자씩 찍히고, 이어서 나머지 문구가 떠오름 */
+(function(){
+  var cover=document.getElementById("top"),h=cover&&cover.querySelector(".t-hero");if(!h)return;
+  if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  var text=h.textContent.trim(),rest=[].filter.call(cover.children,function(c){return c!==h});
+  h.style.minHeight=h.offsetHeight+"px";
+  h.setAttribute("aria-label",text);h.textContent="";h.classList.add("type-h");
+  var chars=text.split("").map(function(c){var s=document.createElement("span");s.className="ch";s.textContent=c;s.setAttribute("aria-hidden","true");h.appendChild(s);return s});
+  var caret=document.createElement("span");caret.className="caret";caret.setAttribute("aria-hidden","true");h.appendChild(caret);
+  rest.forEach(function(el){el.classList.add("cover-wait")});
+  function finish(){
+    rest.forEach(function(el,i){setTimeout(function(){el.classList.add("cover-in");el.classList.remove("cover-wait")},300+i*107)});
+    setTimeout(function(){caret.classList.add("gone");h.style.minHeight=""},1600);
+  }
+  function type(i){
+    if(i>=chars.length){finish();return}
+    chars[i].classList.add("on");
+    setTimeout(function(){type(i+1)},70+Math.random()*40);
+  }
+  var started=false;function start(){if(started)return;started=true;setTimeout(function(){type(0)},250)}
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(start);
+  setTimeout(start,800);
+})();
+/* 인스타툰: 표지를 누르면 한 편 전체를 세로로 보여 줌 */
+(function(){
+  var dlg=document.getElementById("toonView");if(!dlg||!dlg.showModal)return;
+  var pages=document.getElementById("toonPages"),title=document.getElementById("toonTitle");
+  [].forEach.call(document.querySelectorAll(".toon-ep"),function(b){
+    b.addEventListener("click",function(){
+      var ep=b.dataset.ep,n=+b.dataset.n,h="";
+      for(var i=1;i<=n;i++)h+='<img src="media/toon/ep'+ep+'-'+i+'.jpg" width="900" height="900" alt="'+b.dataset.title+' '+i+'컷">';
+      pages.innerHTML=h;title.textContent=b.dataset.title;dlg.showModal();dlg.scrollTop=0;
+    });
+  });
+  [].forEach.call(document.querySelectorAll("img.zoom"),function(im){
+    im.addEventListener("click",function(){
+      pages.innerHTML='<img src="'+im.getAttribute("src")+'" alt="'+im.alt+'">';
+      title.textContent=im.alt;dlg.classList.add("wide");dlg.showModal();
+    });
+  });
+  dlg.addEventListener("close",function(){dlg.classList.remove("wide")});
+  document.getElementById("toonClose").addEventListener("click",function(){dlg.close()});
+  dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
+})();
+/* 스크롤 등장 효과: 각 보드 안의 요소를 위에서부터 순서대로 살짝 늦게 띄움 */
+(function(){
+  if(!("IntersectionObserver" in window))return;
+  if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  var items=[];
+  [].forEach.call(document.querySelectorAll(".board"),function(b){
+    if(b.id==="top")return; /* 표지는 타이핑 효과가 따로 처리 */
+    var kids=[];
+    [].forEach.call(b.children,function(c){
+      if(c.classList.contains("cols")||c.classList.contains("phones"))[].push.apply(kids,c.children);
+      else kids.push(c);
+    });
+    kids.forEach(function(el,i){el.classList.add("reveal");el.style.setProperty("--d",Math.min(i,6)*0.09+"s");items.push(el)});
+  });
+  document.documentElement.classList.add("js-reveal");
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting||e.boundingClientRect.top<0){e.target.classList.add("is-show");io.unobserve(e.target)}});
+  },{rootMargin:"0px 0px -8% 0px",threshold:.12});
+  items.forEach(function(el){io.observe(el)});
+})();
+(function(){
+  var vids=[].slice.call(document.querySelectorAll("video"));
+  var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(reduce){vids.forEach(function(v){v.controls=true});return}
+  if(!("IntersectionObserver" in window))return;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var v=e.target;
+      if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){v.controls=true})}
+      else{try{v.pause()}catch(x){}}
+    });
+  },{threshold:.5});
+  vids.forEach(function(v){io.observe(v);v.addEventListener("click",function(){v.paused?v.play():v.pause()})});
+})();
+</script>

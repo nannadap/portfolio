@@ -323,6 +323,17 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
 .q{font-family:var(--f-serif);font-weight:300;font-size:clamp(15px,1.5vw,18px);line-height:1.55}
 .q small{display:block;color:var(--mu);font-family:var(--f-body);font-size:.78em;margin-top:2px}
 .retro{border-top:1.5px solid var(--bf);padding-top:14px;display:grid;gap:10px}
+.goal{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:10px 16px;border-radius:12px;background:rgba(255,255,255,.75);border:1px solid var(--ln);font-size:clamp(14px,1.3vw,16px);line-height:1.5;justify-self:start}
+.goal b{font-family:var(--f-head);font-weight:700;font-size:12px;letter-spacing:.06em;color:var(--ac)}
+.goal i{font-style:normal;color:var(--ac);font-weight:700}
+.goal strong{font-weight:700}
+.cover-v{grid-template-columns:minmax(0,1fr) auto;column-gap:clamp(24px,4vw,56px);align-items:center}
+.cover-v>.stack{gap:clamp(10px,1.3vw,16px)}
+.cover-v .t-xl{font-size:clamp(28px,4.1vw,52px)}
+.cover-v .meta div{padding:8px 14px 8px 0}
+#p2,#p3,#p4{gap:clamp(12px,1.7vw,20px)}
+.cover-v .meta{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cover-v .phone{flex:none;width:clamp(150px,17vw,200px)}
 .btn{display:inline-block;justify-self:start;padding:7px 18px;border-radius:999px;background:var(--bf);color:var(--bb);text-decoration:none;font-weight:700;font-size:14.5px}
 
 /* floating index */
@@ -331,7 +342,7 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
 
 @media (max-width:860px){
   .board{aspect-ratio:auto;padding:26px 20px 40px}
-  .cols,.c12,.c21,.cprof,.cA,.cB,.cset{grid-template-columns:minmax(0,1fr)}
+  .cols,.c12,.c21,.cprof,.cA,.cB,.cset,.cover-v{grid-template-columns:minmax(0,1fr)}
   .set-shot{max-width:240px}
   .c3,.c4{grid-template-columns:minmax(0,1fr)}
   .meta{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -405,7 +416,6 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
   <div class="prof-info">
     <dl class="kv">
       <dt>이름</dt><dd>양예지</dd>
-      <dt>생년월일</dt><dd>1999.12.24</dd>
       <dt>이메일</dt><dd><a href="mailto:yejee3514@gmail.com">yejee3514@gmail.com</a> <span class="sm">개인</span><br><a href="mailto:onemonthnanna@gmail.com">onemonthnanna@gmail.com</a> <span class="sm">유튜브</span></dd>
       <dt>채널</dt><dd><a href="https://www.youtube.com/@onemonthnanna" target="_blank" rel="noopener">YouTube</a> · <a href="https://www.instagram.com/nanna1month/" target="_blank" rel="noopener">Instagram</a></dd>
     </dl>
@@ -431,17 +441,21 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
 </section>
 
 <!-- ================= P1 인용함 ================= -->
-<section class="board b-leaf" id="p1">
-  <p class="kick">Project 01</p>
-  <h2 class="t-xl">인용함 ✳<br><span class="hl">영상 + 그때의 내 생각</span></h2>
-  <p class="tx">여러 플랫폼에 흩어진 영상을 “왜 저장했는지”까지 함께 쌓는 개인 아카이브 웹앱. 기획부터 서버 연동, 배포까지 AI(ChatGPT, 이후 Claude)와 대화하며 혼자 진행했습니다.</p>
-  <dl class="meta">
-    <div><dt>참여</dt><dd>1인 (기획·디자인·개발)</dd></div>
-    <div><dt>ROLE</dt><dd>기획 · 디자인 · AI 협업 개발 · 배포</dd></div>
-    <div><dt>CATEGORY</dt><dd>Mobile Web App<br>2026.10.9 ~</dd></div>
-    <div><dt>TOOLS</dt><dd>React · TypeScript · Vite · Supabase · GitHub · Vercel · ChatGPT · Claude</dd></div>
-  </dl>
-  <a class="btn" href="https://inyeon-app-amber.vercel.app" target="_blank" rel="noopener">인용함 웹앱 열어 보기 ↗</a>
+<section class="board b-leaf cover-v" id="p1">
+  <div class="stack">
+    <p class="kick">Project 01</p>
+    <h2 class="t-xl">인용함 ✳<br><span class="hl">영상 + 그때의 내 생각</span></h2>
+    <p class="tx">여러 플랫폼에 흩어진 영상을 “왜 저장했는지”까지 함께 쌓는 개인 아카이브 웹앱. 기획부터 서버 연동, 배포까지 AI(ChatGPT, 이후 Claude)와 대화하며 혼자 진행했습니다.</p>
+    <p class="goal"><b>목표</b>저장만 하고 다시 안 보는 영상을 내 생각과 함께 다시 보게 <i>→</i> <b>결과</b><strong>3주 만에 웹앱 배포, 지인에게 공개</strong></p>
+    <dl class="meta">
+      <div><dt>참여</dt><dd>1인 (기획·디자인·개발)</dd></div>
+      <div><dt>ROLE</dt><dd>기획 · 디자인 · AI 협업 개발 · 배포</dd></div>
+      <div><dt>CATEGORY</dt><dd>Mobile Web App<br>2026.10.9 ~</dd></div>
+      <div><dt>TOOLS</dt><dd>React · TypeScript · Vite · Supabase · GitHub · Vercel · ChatGPT · Claude</dd></div>
+    </dl>
+    <a class="btn" href="https://inyeon-app-amber.vercel.app" target="_blank" rel="noopener">인용함 웹앱 열어 보기 ↗</a>
+  </div>
+  <figure class="phone"><div class="scr"><video muted loop playsinline preload="metadata" poster="media/demo-search.jpg" aria-label="인용함에 쌓인 기록을 카드와 목록으로 보고 태그와 검색으로 찾는 화면"><source src="media/demo-search.mp4" type="video/mp4"></video></div></figure>
 </section>
 
 <section class="board b-mint">
@@ -685,11 +699,12 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
     <div><dt>CATEGORY</dt><dd>YouTube · 여행 정보<br>2025.6 ~ 현재</dd></div>
     <div><dt>TOOLS</dt><dd>CapCut</dd></div>
   </dl>
+  <p class="goal"><b>목표</b>직접 살아 본 도시의 정보를 나누기 <i>→</i> <b>결과</b><strong>영상 60편+ · 구독자 2.5천 · 테무 유료 협업 2건</strong></p>
   <a class="btn" href="https://www.youtube.com/@onemonthnanna" target="_blank" rel="noopener">유튜브 채널 ‘난나의 한달일기’ ↗</a>
 </section>
 
 <section class="board b-cream">
-  <p class="kick">01 · 채널 한눈에</p>
+  <p class="kick">01 · 채널 한눈에 <span class="sm">2026.11 기준</span></p>
   <div class="cols c3">
     <div class="stack"><p class="big-n">2.5천</p><p class="tx">구독자</p></div>
     <div class="stack"><p class="big-n">60+</p><p class="tx">직접 편집한 영상</p></div>
@@ -819,6 +834,7 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
     <div><dt>CATEGORY</dt><dd>Instagram Reels<br>YouTube Shorts · TikTok</dd></div>
     <div><dt>TOOLS</dt><dd>CapCut</dd></div>
   </dl>
+  <p class="goal"><b>목표</b>한 달 동안 하루 한 편 연재 <i>→</i> <b>결과</b><strong>24편 완주 · 총 조회수 46만+</strong></p>
 </section>
 
 <section class="board b-cream">
@@ -844,11 +860,11 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
 </section>
 
 <section class="board b-leaf">
-  <p class="kick">02 · 반응</p>
+  <p class="kick">02 · 반응 <span class="sm">2026.11 기준</span></p>
   <div class="cols c4 nums-sm">
     <div class="stack"><p class="big-n">46만+</p><p class="tx">시리즈 24편 총 조회수</p></div>
     <div class="stack"><p class="big-n">9만</p><p class="tx">가장 많이 본 릴스 조회수</p></div>
-    <div class="stack"><p class="big-n">2,400+</p><p class="tx">한 편의 저장 수</p></div>
+    <div class="stack"><p class="big-n">2,400+</p><p class="tx">9만 회 릴스의 저장 수</p></div>
     <div class="stack"><p class="big-n">900+</p><p class="tx">연재로 늘어난 팔로워</p></div>
   </div>
   <div class="cols c12" style="align-items:start">
@@ -872,7 +888,7 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
       </div>
     </div>
     <div class="retro">
-      <p class="tx"><b>잘한 점</b> 유튜버에 머물지 않고 인스타그램 여행 크리에이터로서의 길도 열었어요. 플랫폼마다 맞는 영상 형태를 직접 비교해 봤고, 대본과 내레이션을 쓰며 후킹과 스토리텔링을 경험했습니다.</p>
+      <p class="tx"><b>잘한 점</b> 유튜브에 머물지 않고 인스타그램 여행 크리에이터로서의 활동도 시도해 볼 수 있었어요. 플랫폼마다 맞는 영상 형태를 직접 비교해 봤고, 대본과 내레이션을 쓰며 후킹과 스토리텔링을 경험했습니다.</p>
       <p class="tx"><b>아쉬운 점</b> 틱톡에서는 반응이 거의 없었고, 10만 회를 넘긴 영상은 나오지 않았어요. 첫 장면에서 붙잡는 후킹 능력이 아직 부족했다고 생각합니다.</p>
       <p class="tx"><b>다음</b> 첫 1~2초의 후킹을 더 다듬고, 플랫폼별로 형식을 맞춰 따로 만들기.</p>
     </div>
@@ -890,6 +906,7 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
     <div><dt>CATEGORY</dt><dd>YouTube · Instagram<br>2023.1 ~ 2023.12</dd></div>
     <div><dt>TOOLS</dt><dd>Premiere Pro <span class="sm">영상 편집</span><br>Photoshop <span class="sm">썸네일·이모티콘</span><br>Procreate <span class="sm">이모티콘</span></dd></div>
   </dl>
+  <p class="goal"><b>목표</b>어려운 MBTI 분석을 쉬운 말과 그림으로 <i>→</i> <b>결과</b><strong>채널 용어·캐릭터 제작 · 16유형 시리즈 완주</strong></p>
 </section>
 
 <section class="board b-cream">
@@ -982,7 +999,7 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
   <p class="kick">07 · 시리즈</p>
   <div class="cols c21" style="align-items:end">
     <h3 class="t-lg">16가지 유형<br>연애 분석 시리즈</h3>
-    <div class="stack" style="gap:4px"><p class="big-n">168만+</p><p class="tx">16편 누적 조회수 <span class="sm">(2026.11 기준)</span></p></div>
+    <div class="stack" style="gap:4px"><p class="big-n">168만+</p><p class="tx">16편 누적 조회수</p><p class="sm">2023년 제작 당시 올린 영상의 현재 누적 · 2026.11 기준</p></div>
   </div>
   <p class="tx">16개 유형을 하나씩, 같은 형식으로 끝까지 완주한 시리즈로 채널에서 반응이 가장 컸습니다. 대표 영상인 ISTP 편과 INTP 편은 각각 <span class="hl">31만, 29만 회</span>를 넘었습니다.</p>
   <div class="ytg ytg16" style="--n:8"><a class="yt top" href="https://youtu.be/7mxWz-o52DI" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/7mxWz-o52DI/mqdefault.jpg" loading="lazy" alt=""><span>ISTP <small>31.6만</small></span></a><a class="yt" href="https://youtu.be/lZ-dGdRnjUo" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/lZ-dGdRnjUo/mqdefault.jpg" loading="lazy" alt=""><span>INFJ <small>22.6만</small></span></a><a class="yt" href="https://youtu.be/MKvi_YCIyKU" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/MKvi_YCIyKU/mqdefault.jpg" loading="lazy" alt=""><span>INFP <small>9.8만</small></span></a><a class="yt" href="https://youtu.be/-3s5HU07dxo" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/-3s5HU07dxo/mqdefault.jpg" loading="lazy" alt=""><span>ESFJ <small>6.5만</small></span></a><a class="yt" href="https://youtu.be/EW93Wo1ZuBc" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/EW93Wo1ZuBc/mqdefault.jpg" loading="lazy" alt=""><span>ESTP <small>7.8만</small></span></a><a class="yt" href="https://youtu.be/tpIdLxe1wUA" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/tpIdLxe1wUA/mqdefault.jpg" loading="lazy" alt=""><span>ENTJ <small>4.9만</small></span></a><a class="yt top" href="https://youtu.be/ZrjZGwAHU5w" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/ZrjZGwAHU5w/mqdefault.jpg" loading="lazy" alt=""><span>INTP <small>29.9만</small></span></a><a class="yt" href="https://youtu.be/EG3CWiqnY1Y" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/EG3CWiqnY1Y/mqdefault.jpg" loading="lazy" alt=""><span>ENFJ <small>1.9만</small></span></a><a class="yt" href="https://youtu.be/I8nk01xR6eI" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/I8nk01xR6eI/mqdefault.jpg" loading="lazy" alt=""><span>ISFJ <small>3.8만</small></span></a><a class="yt" href="https://youtu.be/7XIj591vOpU" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/7XIj591vOpU/mqdefault.jpg" loading="lazy" alt=""><span>ENTP <small>2.9만</small></span></a><a class="yt" href="https://youtu.be/4jYSXDePCpg" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/4jYSXDePCpg/mqdefault.jpg" loading="lazy" alt=""><span>ISTJ <small>17.7만</small></span></a><a class="yt" href="https://youtu.be/fhDEW5mIf9A" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/fhDEW5mIf9A/mqdefault.jpg" loading="lazy" alt=""><span>ESFP <small>5만</small></span></a><a class="yt" href="https://youtu.be/951rM51dJEM" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/951rM51dJEM/mqdefault.jpg" loading="lazy" alt=""><span>ISFP <small>14.5만</small></span></a><a class="yt" href="https://youtu.be/RdKtQSBNOw0" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/RdKtQSBNOw0/mqdefault.jpg" loading="lazy" alt=""><span>ENFP <small>2.2만</small></span></a><a class="yt" href="https://youtu.be/wiGT-qbRFZk" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/wiGT-qbRFZk/mqdefault.jpg" loading="lazy" alt=""><span>ESTJ <small>5.1만</small></span></a><a class="yt" href="https://youtu.be/4mljtPYflF0" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/4mljtPYflF0/mqdefault.jpg" loading="lazy" alt=""><span>INTJ <small>2.6만</small></span></a></div>
@@ -1015,9 +1032,9 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
       </ul>
     </div>
     <div class="retro">
-      <p class="tx"><b>잘한 점</b> 없던 용어(클리어·라이트·블러)를 만들어 채널의 언어로 정착시켰고, 그 용어가 판매 상품의 해석가이드 영상까지 이어졌어요. 16유형 연애 시리즈는 끝까지 완주해 누적 168만 회를 만들었고, 영상 밖의 방향(상담, 전자책)도 제안했습니다.</p>
+      <p class="tx"><b>잘한 점</b> 없던 용어(클리어·라이트·블러)를 만들어 채널의 언어로 정착시켰고, 그 용어가 판매 상품의 해석가이드 영상까지 이어졌어요. 16유형 연애 시리즈는 끝까지 완주했고(현재 누적 168만 회+), 영상 밖의 방향(상담, 전자책)도 제안했습니다.</p>
       <p class="tx"><b>함께 일한 방식</b> MBTI 전문 자격을 가진 대표는 분석 내용을, 저는 디자인·편집과 용어·세부 방향 기획을 맡아 각자 잘하는 영역으로 역할을 나눴어요. 전문가의 내용을 보는 사람이 이해하기 쉬운 말과 그림으로 바꾸는 일이 제 몫이었습니다.</p>
-      <p class="tx"><b>배운 점</b> 채널이 앞으로 갈 방향과 제가 하고 싶은 방향이 달라졌을 때, 이를 정리해 팀을 떠나는 선택을 했습니다.</p>
+      <p class="tx"><b>아쉬운 점</b> 채널이 앞으로 갈 방향과 제가 하고 싶은 방향이 달라졌어요. 그 차이를 정리해 팀을 떠나는 선택을 했습니다.</p>
     </div>
   </div>
 </section>
@@ -1049,7 +1066,6 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
 
 <!-- Thank you -->
 <section class="board b-green b-center" id="thanks">
-  <p class="kick">Thank you</p>
   <h2 class="t-hero" style="font-size:clamp(52px,13vw,160px)">Thank you</h2>
   <p class="tx">끝까지 봐 주셔서 감사합니다. 앞으로도 불편을 발견하면, 일단 만들어 보겠습니다.<br><span class="sm">이 포트폴리오 사이트도 AI(Claude)와 대화하며 직접 만들었어요.</span></p>
   <dl class="kv" style="max-width:420px">

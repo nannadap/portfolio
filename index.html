@@ -274,6 +274,13 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
 .nx-steps li+li{padding-left:clamp(12px,1.6vw,20px);border-left:1px solid var(--ln)}
 .nx-steps b{font-family:var(--f-head);font-weight:700;font-size:clamp(15px,1.4vw,17px);color:var(--ac)}
 .nx-steps p{font-size:clamp(13px,1.15vw,14.5px);line-height:1.6}
+.nx-steps .nx-k{font-family:var(--f-head);font-weight:700;font-size:clamp(16px,1.6vw,20px);line-height:1.35;color:var(--bf)}
+.nx-gap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.nx-gap div{display:grid;gap:2px;padding:10px 14px;border-radius:12px;border:1px solid var(--ln);background:rgba(255,255,255,.55)}
+.nx-gap b{font-size:12.5px;color:var(--mu);font-weight:700;letter-spacing:.02em}
+.nx-gap span{font-family:var(--f-head);font-weight:700;font-size:clamp(14px,1.4vw,17px)}
+.nx-gap .nx-empty{background:#fff;border:1.5px solid var(--bf)}
+.nx-gap .nx-empty b{color:var(--ac)}
 .nx-nums .big-n small{font-size:.32em;color:var(--mu);margin-left:6px;letter-spacing:0}
 .nx-nums .nx-word{font-size:clamp(28px,3.6vw,46px);line-height:1.3;white-space:nowrap}
 .nx-rules .ti{font-family:var(--f-body);font-weight:400;font-size:clamp(13.5px,1.2vw,15px)}
@@ -373,7 +380,7 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
   .guide-grid{grid-template-columns:minmax(0,1fr)}
   .reel-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
   .nums-sm{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
-  .nx-steps{grid-template-columns:minmax(0,1fr)}
+  .nx-steps,.nx-gap{grid-template-columns:minmax(0,1fr)}
   .nx-steps li+li{padding-left:0;border-left:0;border-top:1px solid var(--ln);padding-top:10px;margin-top:8px}
   .spec{grid-template-columns:minmax(0,1fr) !important}
   .pref ul{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:14px}
@@ -450,7 +457,7 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
     <li><a class="row" href="#p2"><span class="no">02</span><span class="ti">난나의 한달일기 — 여행 유튜브<small class="per">2025.6 ~ 현재</small></span><span class="cat">기획 · 촬영 · 편집 / 혼자</span></a></li>
     <li><a class="row" href="#p3"><span class="no">03</span><span class="ti">한달살기 릴스 시리즈<small class="per">2026.3 ~ 2026.8</small></span><span class="cat">숏폼 기획 · 촬영 · 내레이션 · 편집</span></a></li>
     <li><a class="row" href="#p4"><span class="no">04</span><span class="ti">마인드밍글 — 채널 PD<small class="per">2023.1 ~ 2023.12</small></span><span class="cat">용어 · 캐릭터 · 콘텐츠 방향</span></a></li>
-    <li><a class="row" href="#next"><span class="no">Next</span><span class="ti">외국어에 가로막힌 로컬 정보와 행사</span><span class="cat">다음에 풀고 싶은 문제</span></a></li>
+    <li><a class="row" href="#next"><span class="no">Next</span><span class="ti">외국어 너머의 로컬 행사를 누구나 찾아갈 수 있게</span><span class="cat">다음에 풀고 싶은 문제</span></a></li>
   </ul>
   <p class="sm">제목을 누르면 해당 프로젝트 커버로 이동합니다.</p>
 </section>
@@ -1057,17 +1064,21 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
 <!-- Next -->
 <section class="board b-sun" id="next">
   <p class="kick">Next · 다음에 풀고 싶은 문제</p>
-  <div class="stack" style="gap:12px">
-    <h2 class="t-xl nx-title">외국어에 가로막힌 <span class="hl">로컬 정보와 행사</span>를<br>누구나 찾아갈 수 있게</h2>
-    <p class="tx">관광객용 정보는 쉽게 구할 수 있지만, 현지인이 가는 맛집과 행사는 그 자리에 가서야 우연히 알게 되는 경우가 많았어요.</p>
+  <div class="stack" style="gap:10px">
+    <h2 class="t-xl nx-title">외국어 너머의 <span class="hl">로컬 행사</span>를<br>누구나 찾아갈 수 있게</h2>
+    <p class="tx">현지인이 가는 맛집과 행사는, 그 자리에 가서야 우연히 알게 됩니다.</p>
   </div>
   <ol class="nx-steps">
-    <li><b>발견</b><p>‘선데이 마켓’이 유명한 건 알지만 정확히 어디로 가야 할지 몰랐던 중년 부부를 만났고, 우연히 알게 된 현지인들의 축제 ‘치앙마이 플라워 페스티벌’을 구독자분들께 알려 드렸더니 정말 좋아하셨어요. 이런 정보가 필요한 사람들이 있다는 걸 알게 됐습니다.</p></li>
-    <li><b>시도 1 · 영상</b><p>한 달 살기 정보를 영상으로 나눴고, ‘치앙마이 한달살기 입문자를 위한 모든 것’ 영상은 10만 회를 넘었어요.</p></li>
-    <li><b>시도 2 · 인용함</b><p>AI를 도구로 활용해 개발 지식 없이 정보 관리 앱을 만들었어요.</p></li>
-    <li><b>한계</b><p>영상도 앱도 제가 아는 정보 안에 머물렀고, 현지인만 아는 행사는 여전히 외국어 너머에 있었어요.</p></li>
+    <li><b>발견</b><p class="nx-k">필요한 사람이 있었다</p><p>선데이 마켓 위치를 몰랐던 중년 부부, 플라워 페스티벌 소식을 반긴 구독자분들</p></li>
+    <li><b>시도 1 · 영상</b><p class="nx-k">정보를 나눴다</p><p>‘치앙마이 한달살기 입문자를 위한 모든 것’ 10만 회+</p></li>
+    <li><b>시도 2 · 인용함</b><p class="nx-k">정보를 모았다</p><p>AI로 개발 지식 없이 만든 정보 관리 앱</p></li>
+    <li><b>한계</b><p class="nx-k">내가 아는 정보까지만</p><p>현지인만 아는 행사는 여전히 외국어 너머에</p></li>
   </ol>
-  <p class="q">기존 언어교환 앱은 대화 중심, 로컬 동행 플랫폼은 프라이빗 체험 중심 — 행사를 발견하는 문제는 남아 있었습니다.</p>
+  <div class="nx-gap">
+    <div><b>언어교환 앱</b><span>대화 중심</span></div>
+    <div><b>로컬 동행 플랫폼</b><span>프라이빗 체험 중심</span></div>
+    <div class="nx-empty"><b>비어 있는 자리</b><span>행사를 발견하는 일</span></div>
+  </div>
 </section>
 
 <section class="board b-cream" id="next-2">

@@ -268,6 +268,16 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
 .toon-view .pages img{display:block;width:100%;height:auto;border-radius:6px}
 
 /* bars & swatches */
+.nx-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1.5px solid var(--bf)}
+.nx-steps li{padding:12px clamp(12px,1.6vw,20px) 0 0;display:grid;gap:6px;align-content:start}
+.nx-steps li+li{padding-left:clamp(12px,1.6vw,20px);border-left:1px solid var(--ln)}
+.nx-steps b{font-family:var(--f-head);font-weight:700;font-size:clamp(15px,1.4vw,17px);color:var(--ac)}
+.nx-steps p{font-size:clamp(13px,1.15vw,14.5px);line-height:1.6}
+.nx-nums .big-n small{font-size:.32em;color:var(--mu);margin-left:6px;letter-spacing:0}
+.nx-nums .nx-word{font-size:clamp(28px,3.6vw,46px);line-height:1.3;white-space:nowrap}
+.nx-rules .ti{font-family:var(--f-body);font-weight:400;font-size:clamp(13.5px,1.2vw,15px)}
+.nx-rules .ti b{font-weight:700}
+#next-2 .next-more{background:#EEF6FC}
 .next-more{display:grid;gap:6px;background:rgba(255,255,255,.6);border-radius:12px;padding:clamp(12px,1.6vw,18px)}
 .next-more .tx{font-size:clamp(13.5px,1.2vw,15px)}
 .save-flow{display:grid;gap:8px}
@@ -362,6 +372,8 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
   .guide-grid{grid-template-columns:minmax(0,1fr)}
   .reel-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
   .nums-sm{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+  .nx-steps{grid-template-columns:minmax(0,1fr)}
+  .nx-steps li+li{padding-left:0;border-left:0;border-top:1px solid var(--ln);padding-top:10px;margin-top:8px}
   .spec{grid-template-columns:minmax(0,1fr) !important}
   .pref ul{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:14px}
   .emo-grid{--n:3}
@@ -1043,23 +1055,42 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
 <!-- Next -->
 <section class="board b-sun" id="next">
   <p class="kick">Next · 다음에 풀고 싶은 문제</p>
+  <div class="stack" style="gap:12px">
+    <h2 class="t-xl">현지어 안에 갇힌<br><span class="hl">행사와 로컬 정보</span> 열어 주기</h2>
+    <p class="tx">관광객용 정보는 쉽게 구할 수 있지만, 현지인이 가는 행사와 맛집은 그 자리에 가서야 알게 되는 경우가 많았어요.</p>
+  </div>
+  <ol class="nx-steps">
+    <li><b>발견</b><p>치앙마이의 축제와 플리마켓은 태국어로만 올라와 찾아가기 어려웠어요. 현지 정보를 전해 드린 중년 부부를 만나, 이 정보가 간절한 사람이 있다는 걸 알았습니다.</p></li>
+    <li><b>시도 1 · 영상</b><p>한 달 살기 정보를 영상으로 나눴고, 치앙마이 총정리 영상은 10만 회를 넘었어요.</p></li>
+    <li><b>시도 2 · 인용함</b><p>AI를 활용해 개발 지식 없이 정보 관리 앱을 만들었어요.</p></li>
+    <li><b>한계</b><p>영상과 도구는 정보를 전하고 정리할 뿐, 현지인의 최신 경험과 행사까지는 닿지 못했어요. 언어교환 앱은 대화 중심, 호스트 예약형 서비스는 유료 가이드 중심이라 행사를 발견하는 문제가 남아 있었습니다.</p></li>
+  </ol>
+  <p class="q">영상과 도구가 풀지 못한 것 — 지금 그곳에 사는 사람들의 정보.</p>
+</section>
+
+<section class="board b-cream" id="next-2">
+  <p class="kick">Next · 11명에게 물었습니다 <span class="sm">지인 대상 소규모 설문 · 방향을 확인하기 위한 것 · 2026.11</span></p>
+  <div class="cols c3 nx-nums nums-sm">
+    <div class="stack"><p class="big-n">8<small>/ 11명</small></p><p class="tx">언어·정보 때문에 현지 행사나 핫플을 놓친 경험이 있다</p></div>
+    <div class="stack"><p class="big-n">6<small>/ 11명</small></p><p class="tx">현지인 친구를 사귀고 싶었지만 언어와 방법이 벽이었다</p></div>
+    <div class="stack"><p class="big-n nx-word">행사가 먼저</p><p class="tx">같이 가고 싶은 이유는 사람이 아니라 행사의 목적과 테마</p></div>
+  </div>
   <div class="cols c11" style="align-items:start">
-    <div class="stack" style="gap:14px">
-      <h2 class="t-xl">여행이 아니라,<br><span class="hl">살아 보는 정보</span></h2>
-      <p class="tx">AI 비서는 비행기 표와 숙소는 예약해 주지만, “이 동네에서 한 달 살면 실제로 어떤지”는 알려 주지 못해요. 병원과 약, 세탁, 장보기, 밤의 치안, 실제 생활비처럼 처음 떠나는 사람이 가장 불안해하는 정보는 여전히 흩어져 있습니다.</p>
-      <p class="q">실제로 살아 본 사람들의 기록을 모아, 처음 떠나는 사람의 질문에 답해 주는 AI 생활 가이드를 만들고 싶어요.</p>
-    </div>
-    <div class="stack" style="gap:14px">
-      <p class="sm">이 문제를 고른 이유 · 직접 겪고 들은 것</p>
-      <ul class="rows two">
-        <li><span class="ti">5개국 9개 도시에서 직접 살아 봄</span><span class="cat">1년 8개월</span></li>
-        <li><span class="ti">시청자가 가장 많이 물은 건 경비·숙소·치안</span><span class="cat">댓글 질문</span></li>
-        <li><span class="ti">총정리 영상 조회수의 39%가 검색 유입</span><span class="cat">사람들이 찾는 정보</span></li>
-        <li><span class="ti">흩어진 기록을 모아 다시 꺼내 보게 만든 경험</span><span class="cat">인용함</span></li>
+    <div class="stack" style="gap:8px">
+      <p class="t-md">설문에서 얻은 설계 원칙</p>
+      <ul class="rows tight nx-rules">
+        <li><span class="no">1</span><span class="ti">사람보다 <b>행사의 목적과 테마</b>가 먼저</span></li>
+        <li><span class="no">2</span><span class="ti"><b>가이드 프로그램처럼 보이지 않게</b> — 모두가 같은 행사의 참여자</span></li>
+        <li><span class="no">3</span><span class="ti">낯선 사람과는 <b>나이·성별·관심사 확인</b>, 열린 공간, 소규모</span></li>
       </ul>
+    </div>
+    <div class="stack" style="gap:10px">
+      <p class="t-md">만들고 싶은 것</p>
+      <p class="tx">AI 번역으로 현지어에 갇힌 행사와 핫플을 열어 주고, 원하는 사람은 <span class="hl">믿을 수 있는 동행</span>과 함께 갈 수 있게 돕는 서비스. 먼저 <b>서울에서 외국인과 한국인을 잇는 시범</b>으로 검증해 보고 싶어요.</p>
       <div class="next-more">
-        <p class="t-md">더 나아가, 정보에서 소외된 여행자</p>
-        <p class="tx">고령층, 휠체어 사용자, 처음 해외에 나가는 사람처럼 필요한 정보가 더 부족한 이들도 있어요. 계단·엘리베이터·화장실처럼 현지에서 직접 확인한 접근성 정보를 쉽게 묻고 답할 수 있게 하고 싶습니다.</p>
+        <p class="t-md">혼자서는 못 푸는 3가지</p>
+        <p class="tx"><b>신뢰</b> 정보를 어떻게 믿게 할까 · <b>안전</b> 낯선 사람과 어떻게 안전하게 만나게 할까 · <b>이용자</b> 어떤 행사에 함께하고 싶어 할까</p>
+        <p class="tx">동료와 이용자를 직접 만나고, 신뢰와 안전 설계를 배우며 작은 시범 서비스로 검증해 보고 싶습니다.</p>
       </div>
     </div>
   </div>

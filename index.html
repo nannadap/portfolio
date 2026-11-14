@@ -281,6 +281,38 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
 .nx-gap span{font-family:var(--f-head);font-weight:700;font-size:clamp(14px,1.4vw,17px)}
 .nx-gap .nx-empty{background:#fff;border:1.5px solid var(--bf)}
 .nx-gap .nx-empty b{color:var(--ac)}
+#next{gap:clamp(8px,1.1vw,14px);padding-top:clamp(20px,3.4vw,42px);padding-bottom:clamp(20px,3.4vw,42px)}
+.nx-title-a{font-size:clamp(26px,3.4vw,44px)}
+#next>.stack>.tx{max-width:none}
+#next .nx-ev{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+#next .nx-nums .big-n{font-size:clamp(30px,4vw,48px)}
+#next .nx-scenes li,#next .nx-q li{padding:4px 0}
+.nx-q li{grid-template-columns:8.6em minmax(0,1fr)}
+#next .nx-nums .tx{font-size:clamp(13px,1.15vw,14.5px)}
+.nx-h{font-family:var(--f-head);font-weight:700;font-size:clamp(14px,1.35vw,16px)}
+.nx-q{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--bf)}
+.nx-q li{display:grid;grid-template-columns:9.5em minmax(0,1fr);gap:8px;padding:6px 0;border-bottom:1px solid var(--ln);font-size:clamp(12px,1.05vw,13.5px);line-height:1.5}
+.nx-q b{font-weight:700}
+.nx-q i{font-style:normal;color:var(--mu)}
+.nx-scenes{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--bf)}
+.nx-scenes li{font-size:clamp(12px,1.05vw,13.5px);line-height:1.5;padding:6px 0;border-bottom:1px solid var(--ln)}
+.nx-scenes li::before{content:"— ";color:var(--ac)}
+.nx-shift,.nx-cmp{display:grid;border-top:1.5px solid var(--bf)}
+.nx-shift p,.nx-cmp p{display:grid;gap:12px;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--ln);font-size:clamp(13px,1.2vw,15px);line-height:1.5}
+.nx-shift p{grid-template-columns:minmax(0,.8fr) 1.5em minmax(0,1.4fr)}
+.nx-shift p>span:first-child{color:var(--mu)}
+.nx-shift i{font-style:normal;color:var(--ac);font-weight:700}
+.nx-shift em{font-style:normal;font-size:.82em;color:var(--ac);font-weight:700;margin-left:4px;white-space:nowrap}
+.nx-cmp p{grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,1.4fr)}
+.nx-cmp p>span:first-child{font-weight:700}
+.nx-shift .nx-hd,.nx-cmp .nx-hd{font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--ac);padding:6px 0}
+.nx-cmp .nx-me{background:#FFF5CF;font-weight:700;padding-left:10px;padding-right:10px;margin:0 -10px}
+.nx-unk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.nx-unk div{display:grid;gap:4px;align-content:start;padding:10px 12px;background:#fff;border:1px solid var(--ln);border-radius:12px}
+.nx-unk b{font-family:var(--f-head);font-weight:700;color:var(--ac);font-size:clamp(14px,1.3vw,16px)}
+.nx-unk p{font-size:clamp(12.5px,1.1vw,14px);line-height:1.5}
+.nx-unk span{font-size:clamp(12px,1.02vw,13px);line-height:1.5;color:var(--mu)}
+.nx-end{display:grid;gap:4px}
 .nx-nums .big-n small{font-size:.32em;color:var(--mu);margin-left:6px;letter-spacing:0}
 .nx-nums .nx-word{font-size:clamp(28px,3.6vw,46px);line-height:1.3;white-space:nowrap}
 .nx-rules .ti{font-family:var(--f-body);font-weight:400;font-size:clamp(13.5px,1.2vw,15px)}
@@ -380,7 +412,10 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
   .guide-grid{grid-template-columns:minmax(0,1fr)}
   .reel-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
   .nums-sm{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
-  .nx-steps,.nx-gap{grid-template-columns:minmax(0,1fr)}
+  .nx-steps,.nx-gap,.nx-unk{grid-template-columns:minmax(0,1fr)}
+  .nx-shift p,.nx-cmp p,.nx-q li{grid-template-columns:minmax(0,1fr)!important;gap:2px}
+  .nx-shift i,.nx-hd{display:none!important}
+  .nx-cmp p>span+span::before{content:"· ";color:var(--mu)}
   .nx-steps li+li{padding-left:0;border-left:0;border-top:1px solid var(--ln);padding-top:10px;margin-top:8px}
   .spec{grid-template-columns:minmax(0,1fr) !important}
   .pref ul{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:14px}
@@ -457,7 +492,7 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
     <li><a class="row" href="#p2"><span class="no">02</span><span class="ti">난나의 한달일기 — 여행 유튜브<small class="per">2025.6 ~ 현재</small></span><span class="cat">기획 · 촬영 · 편집 / 혼자</span></a></li>
     <li><a class="row" href="#p3"><span class="no">03</span><span class="ti">한달살기 릴스 시리즈<small class="per">2026.3 ~ 2026.8</small></span><span class="cat">숏폼 기획 · 촬영 · 내레이션 · 편집</span></a></li>
     <li><a class="row" href="#p4"><span class="no">04</span><span class="ti">마인드밍글 — 채널 PD<small class="per">2023.1 ~ 2023.12</small></span><span class="cat">용어 · 캐릭터 · 콘텐츠 방향</span></a></li>
-    <li><a class="row" href="#next"><span class="no">Next</span><span class="ti">외국어 너머의 로컬 행사를 누구나 찾아갈 수 있게</span><span class="cat">다음에 풀고 싶은 문제</span></a></li>
+    <li><a class="row" href="#next"><span class="no">Next</span><span class="ti">외국어에 가로막힌 로컬 정보와 행사</span><span class="cat">다음에 풀고 싶은 문제</span></a></li>
   </ul>
   <p class="sm">제목을 누르면 해당 프로젝트 커버로 이동합니다.</p>
 </section>
@@ -1064,48 +1099,80 @@ figure.art img{display:block;width:100%;height:auto;border-radius:10px}
 <!-- Next -->
 <section class="board b-sun" id="next">
   <p class="kick">Next · 다음에 풀고 싶은 문제</p>
-  <div class="stack" style="gap:10px">
-    <h2 class="t-xl nx-title">외국어 너머의 <span class="hl">로컬 행사</span>를<br>누구나 찾아갈 수 있게</h2>
-    <p class="tx">현지인이 가는 맛집과 행사는, 그 자리에 가서야 우연히 알게 됩니다.</p>
+  <div class="stack" style="gap:8px">
+    <h2 class="t-xl nx-title nx-title-a">외국어에 가로막힌 <span class="hl">로컬 정보와 행사</span>를<br>누구나 찾아갈 수 있게</h2>
+    <p class="tx">영상과 앱으로 나눌 수 있었던 건 제가 이미 아는 정보까지였습니다. 그 너머가 저만의 문제인지 구독자에게 물었습니다.</p>
+    <p class="sm">해외 경험이 있는 구독자 15명 · 2026.11.12~14 · 방향 확인용 소규모 설문 (통계적 대표성은 없어요)</p>
   </div>
-  <ol class="nx-steps">
-    <li><b>발견</b><p class="nx-k">필요한 사람이 있었다</p><p>선데이 마켓 위치를 몰랐던 중년 부부, 플라워 페스티벌 소식을 반긴 구독자분들</p></li>
-    <li><b>시도 1 · 영상</b><p class="nx-k">정보를 나눴다</p><p>‘치앙마이 한달살기 입문자를 위한 모든 것’ 10만 회+</p></li>
-    <li><b>시도 2 · 인용함</b><p class="nx-k">정보를 모았다</p><p>AI로 개발 지식 없이 만든 정보 관리 앱</p></li>
-    <li><b>한계</b><p class="nx-k">내가 아는 정보까지만</p><p>현지인만 아는 행사는 여전히 외국어 너머에</p></li>
-  </ol>
-  <div class="nx-gap">
-    <div><b>언어교환 앱</b><span>대화 중심</span></div>
-    <div><b>로컬 동행 플랫폼</b><span>프라이빗 체험 중심</span></div>
-    <div class="nx-empty"><b>비어 있는 자리</b><span>행사를 발견하는 일</span></div>
+  <div class="cols c3 nx-nums nums-sm">
+    <div class="stack"><p class="big-n">12<small>/ 15</small></p><p class="tx">언어·정보 때문에 현지 행사나 핫플을 놓친 적이 있다</p></div>
+    <div class="stack"><p class="big-n">10<small>/ 15</small></p><p class="tx">현지인 친구를 사귀고 싶었다<br><span class="sm">막힌 이유: 언어 7명, 만날 계기 없음 4명</span></p></div>
+    <div class="stack"><p class="big-n">6<small>/ 15</small></p><p class="tx">누구와 가느냐보다 어떤 행사인지가 먼저다</p></div>
+  </div>
+  <div class="cols nx-ev" style="align-items:start">
+    <div class="stack" style="gap:6px">
+      <p class="nx-h">문항별 결과</p>
+      <ul class="nx-q">
+        <li><b>Q1 놓친 경험</b><span>있다 12 · 아마 많을 것 1 · 크게 없다 1 · 무응답 1</span></li>
+        <li><b>Q2 현지인 친구</b><span>사귀고 싶었다 10 · 간절하지 않음 3 · 한국인끼리 편함 1 · 무응답 1</span></li>
+        <li><b>Q3 낯선 사람과</b><span>상대 확인 8 · 행사 목적·테마 4 · 지인·열린 공간 1 · 조건 없음 3 <i>(중복)</i></span></li>
+        <li><b>Q4 한국에서 외국인과</b><span>관심 있다 6 · 조건·부담 3 · 행사에 따라 5 · 무응답 1</span></li>
+      </ul>
+    </div>
+    <div class="stack" style="gap:6px">
+      <p class="nx-h">응답에서 나온 장면</p>
+      <ul class="nx-scenes">
+        <li>매주 열리는 다리 행사를 숙소 친구에게 듣고서야 알았다.</li>
+        <li>1년을 살아도 행사는 그 자리에 가서야 알게 됐다.</li>
+        <li>현지어 홍보물을 읽지 못해 바로 옆의 유명한 카페를 놓쳤다.</li>
+        <li>술을 마시지 않으니 현지인을 만날 자리가 많지 않았다.</li>
+      </ul>
+      <p class="sm">“마음만 먹으면 찾을 수 있다”는 답도 1명 있었어요. 이 구상은 찾을 의지가 있어도 외국어 때문에 닿지 못하는 경우를 대상으로 합니다.</p>
+    </div>
   </div>
 </section>
 
 <section class="board b-cream" id="next-2">
-  <p class="kick">Next · 15명에게 물었습니다 <span class="sm">해외 경험이 있는 구독자 대상 · 방향을 확인하기 위한 소규모 설문 · 2026.11</span></p>
-  <div class="cols c3 nx-nums nums-sm">
-    <div class="stack"><p class="big-n">12<small>/ 15명</small></p><p class="tx">언어·정보 때문에 현지 행사나 핫플을 놓친 경험이 있다</p></div>
-    <div class="stack"><p class="big-n">10<small>/ 15명</small></p><p class="tx">현지인 친구를 사귀고 싶었지만 언어와 만날 계기가 부족했다</p></div>
-    <div class="stack"><p class="big-n nx-word">행사가 먼저</p><p class="tx">같이 가고 싶은 이유는 사람이 아니라 행사의 목적과 테마</p></div>
+  <p class="kick">Next · 설문이 바꾼 생각</p>
+  <div class="nx-shift">
+    <p class="nx-hd"><span>처음 생각</span><span></span><span>설문 후</span></p>
+    <p><span>현지인과 여행자를 이어 주면 된다</span><i>→</i><span>사람보다 <b>행사의 목적과 테마</b>가 먼저다 <em>6명</em></span></p>
+    <p><span>친구를 사귀고 싶어 할 것이다</span><i>→</i><span>원하는 사람은 많지만(10명) 막힌 건 <b>만날 계기</b>다. 행사가 그 계기가 된다</span></p>
+    <p><span>믿을 만한 사람이면 된다</span><i>→</i><span>조건이 사람마다 다르다. <b>나이·성별·관심사를 확인</b>하고, <b>열린 공간에서 소규모로</b> <em>8명</em></span></p>
+    <p><span>한국인이 외국인을 안내하면 된다</span><i>→</i><span><b>가이드 프로그램처럼 보이면 안 된다.</b> 모두가 같은 행사의 참여자여야 한다</span></p>
   </div>
-  <div class="cols c11" style="align-items:start">
-    <div class="stack" style="gap:8px">
-      <p class="t-md">설문에서 얻은 설계 원칙</p>
-      <ul class="rows tight nx-rules">
-        <li><span class="no">1</span><span class="ti">사람보다 <b>행사의 목적과 테마</b>가 먼저</span></li>
-        <li><span class="no">2</span><span class="ti"><b>가이드 프로그램처럼 보이지 않게</b> — 모두가 같은 행사의 참여자</span></li>
-        <li><span class="no">3</span><span class="ti">낯선 사람과는 <b>나이·성별·관심사 확인</b>, 열린 공간, 소규모</span></li>
-      </ul>
+  <div class="stack" style="gap:6px">
+    <p class="nx-h">기존 방식과 다른 점</p>
+    <div class="nx-cmp">
+      <p class="nx-hd"><span>방식</span><span>중심에 있는 것</span><span>남는 문제</span></p>
+      <p><span>언어교환 앱·모임</span><span>대화</span><span>같이 갈 곳, 만날 이유가 없다</span></p>
+      <p><span>로컬 동행 플랫폼</span><span>호스트와의 프라이빗 체험</span><span>현지인이 가는 행사를 찾는 일은 그대로다</span></p>
+      <p><span>오픈채팅·SNS</span><span>흩어진 정보</span><span>현지어 게시물은 놓치고, 믿을 만한지 알기 어렵다</span></p>
+      <p class="nx-me"><span>이 구상</span><span>공개 행사</span><span>다음 장 “아직 모르는 것”</span></p>
     </div>
-    <div class="stack" style="gap:10px">
-      <p class="t-md">만들고 싶은 것</p>
-      <p class="tx">AI 번역으로 외국어에 가로막힌 행사와 핫플을 누구에게나 열어 주고, 원하는 사람은 <span class="hl">믿을 수 있는 동행</span>과 함께 갈 수 있게 돕는 서비스. 먼저 <b>서울에서 외국인과 한국인을 잇는 시범</b>으로 작게 검증해 보고 싶어요.</p>
-      <div class="next-more">
-        <p class="t-md">혼자서는 못 푸는 3가지</p>
-        <p class="tx"><b>신뢰</b> 정보를 어떻게 믿게 할까 · <b>안전</b> 낯선 사람과 어떻게 안전하게 만나게 할까 · <b>이용자</b> 어떤 행사에 함께하고 싶어 할까</p>
-        <p class="tx">동료와 함께 이용자를 직접 인터뷰하고, 멘토에게 신뢰와 안전 설계를 배우며 시범 서비스로 검증해 보고 싶습니다.</p>
-      </div>
+  </div>
+</section>
+
+<section class="board b-mint" id="next-3">
+  <p class="kick">Next · 이용 장면과 아직 모르는 것</p>
+  <ol class="nx-steps">
+    <li><b>1 · 발견</b><p class="nx-k">내 언어로 보인다</p><p>이번 주 동네 행사가 내 언어로 보인다. 원문과 출처가 함께 있다.</p></li>
+    <li><b>2 · 판단</b><p class="nx-k">갈지 정한다</p><p>행사의 테마, 장소, 비용을 보고 갈지 정한다.</p></li>
+    <li><b>3 · 선택</b><p class="nx-k">혼자 또는 동행</p><p>동행을 원하면 나이대·성별·관심사를 확인하고 소규모로 신청한다.</p></li>
+    <li><b>4 · 참여</b><p class="nx-k">같은 참여자로</p><p>열린 장소에서 만나, 안내자와 손님이 아니라 같은 행사의 참여자로 즐긴다.</p></li>
+  </ol>
+  <div class="stack" style="gap:6px">
+    <p class="nx-h">아직 모르는 것 <span class="sm">가설 → 확인 방법</span></p>
+    <div class="nx-unk">
+      <div><b>정보</b><p>행사 정보를 어디서, 어떤 허락을 받고 가져올 수 있을까</p><span>→ 공개 행사 페이지와 제보부터 시작해 확인</span></div>
+      <div><b>신뢰</b><p>AI가 옮긴 정보를 사람들이 믿을까</p><span>→ 원문·출처를 함께 보여 주는 시안으로 반응 확인</span></div>
+      <div><b>안전</b><p>어떤 조건이면 낯선 사람과 간다고 느낄까</p><span>→ 이용자 인터뷰와 소규모 시범 모임</span></div>
+      <div><b>동기</b><p>한국인은 왜 외국인과 같이 가고 싶어 할까 (설문에서 답이 갈림)</p><span>→ 한국인·외국인 인터뷰, 행사 유형별 비교</span></div>
     </div>
+  </div>
+  <div class="nx-end">
+    <p class="tx"><b>첫 걸음</b> 서울에서 한 가지 유형의 행사로 작게 시작합니다.</p>
+    <p class="q">이 문제를 사람들과 함께 확인하고 풀어 보고 싶습니다.</p>
   </div>
 </section>
 
